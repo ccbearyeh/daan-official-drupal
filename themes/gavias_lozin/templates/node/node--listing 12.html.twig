@@ -1,0 +1,591 @@
+{%
+  set classes = [
+    'node',
+    'node-detail',
+    'node--type-' ~ node.bundle|clean_class,
+    node.isPromoted() ? 'node--promoted',
+    node.isSticky() ? 'node--sticky',
+    not node.isPublished() ? 'node--unpublished',
+    view_mode ? 'node--view-mode-' ~ view_mode|clean_class,
+    'clearfix',
+  ]
+%}
+{% set conBody  %}{{ content.field_listing_features }}{% endset %}
+{% set conAddress %}{{ node.field_listing_address_show.value }}{% endset %}
+{% set conVideo %}{{ node.field_listing_video.value }}{% endset %}
+<!-- Start Display article for teaser page -->
+{% if view_mode == 'teaser' %} 
+  
+  <div class="listing-block v2">
+    
+    {% if content.field_listing_image|render %}
+      <div class="listing-image text-center">
+        {{ content.field_listing_image }}
+        <span class="show-in-map"><a href="#" title="{{'Show In Map'|t}}"><i class="la la-map-marker"></i></a></span>
+        <div class="listing-preview">
+          {% if content.field_listing_gallery %}
+            <div class="preview-gallery">{{ content.field_listing_gallery }}</div>
+          {% endif %}  
+          {% if content.field_listing_video|render %}
+            <div class="preview-video">
+              <a class="popup-video" href="{{ conVideo|trim }}"><i class="icon la la-camera"></i>{{ "Video" }}</a>
+            </div>
+          {% endif %}
+        </div>  
+      </div>
+    {% endif %}  
+
+    <div class="listing-content clearfix">  
+      <div class="listing-info">
+        <h3 class="title"><a href="{{ url }}" rel="bookmark">{{ label }}</a></h3>
+        {% if node.field_listing_address_show.value %}
+          <div class="address"><i class="icon la la-map"></i>{{ conAddress|striptags }}</div>
+        {% endif %}
+        {% if content.field_listing_phone|render %}
+          <div class="phone"><i class="icon la la-phone"></i>{{ node.field_listing_phone.value }}</div>
+        {% endif %}
+      </div>
+      <div class="listing-footer">
+        <div class="left listing-category">{{ content.field_listing_category }}</div>
+        <div class="right listing-location"><i class="icon la la-map-marker"></i>{{ content.field_listing_location }}</div>
+      </div>
+    </div>  
+    <div class="listing-data hidden">
+      <span class="data-lat">{{node.field_listing_map.lat}}</span>
+      <span class="data-lon">{{node.field_listing_map.lon}}</span>
+      <span class="data-html">
+        <span class="gva-map-content-popup">
+          <span class="image">
+            <a href="{{ url }}" rel="bookmark">
+              <img src="{{ node.field_listing_image.entity.uri.value | image_style('small') }}" alt="{{ node.field_listing_image.alt }}"/>
+            </a>
+          </span>
+          <span class="content-inner">
+            <span class="title"><a href="{{ url }}" rel="bookmark">{{ node.title.value }}</a></span>
+            {% if node.field_listing_address_show.value %}
+              <span class="address"><i class="icon la la-map"></i>{{ conAddress|striptags }}</span>
+            {% endif %}
+            {% if node.field_listing_phone.value %}
+              <span class="phone"><i class="icon la la-phone"></i>{{ node.field_listing_phone.value }}</span>
+            {% endif %}
+          </span>  
+        </span>
+      </span>
+    </div>
+  </div> 
+
+{% elseif view_mode == 'teaser_2' %}
+  <div class="listing-block">
+    <div class="listing-image text-center">
+      {{ content.field_listing_image }}
+      <span class="show-in-map"><a href="#" title="{{'Show In Map'|t}}"><i class="la la-map-marker"></i></a></span>
+      <div class="listing-preview">
+        {% if content.field_listing_gallery %}
+          <div class="preview-gallery">{{ content.field_listing_gallery }}</div>
+        {% endif %}  
+        {% if content.field_listing_video|render %}
+          <div class="preview-video">
+            <a class="popup-video" href="{{ conVideo|trim }}"><i class="icon la la-camera"></i>{{ "Video" }}</a>
+          </div>
+        {% endif %}
+      </div>  
+    </div>
+    <div class="listing-content clearfix">  
+      <div class="listing-info">
+        <h3 class="title"><a href="{{ url }}" rel="bookmark">{{ label }}</a></h3>
+        <div class="body">{{ conBody|striptags }}</div>
+        {% if node.field_listing_address_show.value %}
+          <div class="address"><i class="icon la la-map"></i>{{ conAddress|striptags }}</div>
+        {% endif %}
+        {% if node.field_listing_phone.value %}
+          <div class="phone"><i class="icon la la-phone"></i>{{ node.field_listing_phone.value }}</div>
+        {% endif %}
+      </div>
+      <div class="listing-footer">
+        <div class="left listing-category">{{ content.field_listing_category }}</div>
+        <div class="right listing-location"><i class="icon la la-map-marker"></i>{{ content.field_listing_location }}</div>
+      </div>
+    </div>  
+    <div class="listing-data hidden">
+      <span class="data-lat">{{node.field_listing_map.lat}}</span>
+      <span class="data-lon">{{node.field_listing_map.lon}}</span>
+      <span class="data-html">
+        <span class="gva-map-content-popup">
+          <span class="image">
+            <a href="{{ url }}" rel="bookmark">
+              <img src="{{ node.field_listing_image.entity.uri.value | image_style('small') }}" alt="{{ node.field_listing_image.alt }}"/>
+            </a>
+          </span>
+          <span class="content-inner">
+            <span class="title"><a href="{{ url }}" rel="bookmark">{{ node.title.value }}</a></span>
+            {% if node.field_listing_address_show.value %}
+              <span class="address"><i class="icon la la-map"></i>{{ conAddress|striptags }}</span>
+            {% endif %}
+            {% if node.field_listing_phone.value %}
+              <span class="phone"><i class="icon la la-phone"></i>{{ node.field_listing_phone.value }}</span>
+            {% endif %}
+          </span>  
+        </span>
+      </span>
+    </div>
+  </div>
+
+{# Listing Single Page #}
+{% else %}
+
+<article{{ attributes.addClass(classes).addClass('node-listing-single') }}>
+  <div class="listing-top">
+    <div id="listing-home" class="listing-gallery before-help-region">
+      {{ content.field_listing_gallery }}
+    </div>
+    
+    <div class="container listing-top-content">
+      <div class="row">
+        <div class="col-xl-12 col-lg-12 col-md-12 col-sm-12 col-xs-12">
+          <div class="listing-categories">
+            {% if content.field_listing_location['#items'][0].entity.parent.target_id != '0' %}
+              <a href="{{ path('entity.taxonomy_term.canonical', {'taxonomy_term': content.field_listing_location['#items'][0].entity.parent.entity.id}) }}">{{content.field_listing_location['#items'][0].entity.parent.entity.label}}</a>{{' > '|t}}{{ content.field_listing_location }}</div>
+            {% endif %}
+          <h1{{ title_attributes.addClass('post-title') }}>{{ label }}</h1>
+          {% if node.field_listing_type.target_id == '130' %}
+            <div class="listing-price">
+              {{node.field_listing_total_price.0.value|number_format}}<span>{{'元/月'|t}}</span></div>
+          {% else %}
+            <div class="listing-price">
+              {{node.field_listing_total_price.0.value|number_format}}<span>{{'元'|t}}</span></div>
+          {% endif %}
+        </div>
+      </div>    
+    </div> 
+{# Top Information Bar #}
+    <div class="listing-nav sticky-listing-nav">
+      <div class="listing-nav-inner">
+        <div class="listing-nav-inner-inner">
+          <div class="container">
+            <div class="row">
+              <div class="col-xl-12 col-lg-12 col-md-12 col-sm-12 col-xs-12">
+                <ul id="listing-top-nav">
+                  {% if content.field_listing_building_main|render %}
+                    <li ><strong>{{ content.field_listing_building_main['#title']}}</strong><br>{{ content.field_listing_building_main.0}}</li>
+                  {% endif %}
+                  {% if content.field_listing_building_facing|render %}
+                    <li><strong>{{ content.field_listing_building_facing['#title']}}</strong><br>{{ content.field_listing_building_facing[0]['#title'] }}</li>
+                  {% endif %}
+                  {% if content.field_listing_building_layout|render %}
+                    <li><strong>{{ content.field_listing_building_layout['#title'] }}</strong><br>{{ content.field_listing_building_layout.0 }}</li>
+                  {% endif %}
+                  {% if content.field_listing_floor|render %}
+                     <li><strong>{#{{ content.field_listing_floor['#title'] }}#}{{'樓層'|t}}</strong><br>{{ content.field_listing_floor.0 }}</li> 
+                  {% endif %}
+                  {% if content.field_listing_building_age|render %}
+                    <li><strong>{{ content.field_listing_building_age['#title'] }}</strong><br>{{ content.field_listing_building_age.0 }}</li>
+                  {% endif %}
+                  {% if content.field_listing_building_type|render %}
+                    <li><strong>{{ content.field_listing_building_type['#title']}}</strong><br>{{ content.field_listing_building_type[0]['#title'] }}</li>
+                  {% endif %}
+                  {% if content.field_listing_type|render %}
+                    <li><strong>{{ content.field_listing_type['#title']}}</strong><br>{{ content.field_listing_type[0]['#title'] }}</li>
+                  {% endif %}
+                  {% if content.field_listing_mrt|render %}
+                    <li><strong>{{ content.field_listing_mrt['#title'] }}</strong><br>{{ content.field_listing_mrt.0 }}</li>
+                  {% endif %}
+                </ul>
+                <div class="print-listing">{{ content.addtoany }}
+                  {% if content.field_print_pdf|render %}
+                    <img src="/sites/default/files/pictures/pdf-32.png" />
+                  {% endif %}
+                  {# node.field_export_pdf_icon.entity.mediaImage.fieldMediaImage.imageUrl #}
+                </div>
+              </div>
+            </div>  
+          </div>
+        </div>  
+      </div>  
+    </div>  
+
+  </div>  
+{# Central(Left Side) Block#}
+  <div class="container">
+    <div class="row">
+      <div class="col-xl-8 col-lg-8 col-md-12 col-sm-12 col-xs-12">
+        <div class="listing-content-main">
+          
+          {% if content.field_listing_type|render %}
+            <div class="listing-info-block listing-description" id="listing-description">
+              <div class="title">{{ '物件基本資訊'|t }}</div>
+              <div class="block-content">
+                <ul class="building-info">
+                  <li class="listing-info-details">
+                    {% if content.field_listing_number|render %}
+                      <div class="w-half">{{ content.field_listing_number }}</div>
+                    {% endif %}
+                    {% if content.field_listing_building_name|render %}
+                        <div class="w-half">{{ content.field_listing_building_name }}</div>
+                    {% endif %}
+                    {% if content.field_listing_address_show|render %}
+                        <div class="w-half">{{ content.field_listing_address_show }}</div>
+                    {% endif %}
+                    {% if content.field_listing_address_full|render %}
+                        <div class="w-half">{{ content.field_listing_address_full }}</div>
+                    {% endif %}
+                    {% if content.field_listing_location|render %}
+                      <div class="w-half">
+                        <div class="field">
+                          <div class="field__label">{{ content.field_listing_location['#title'] }}</div>
+                          <div><a href="{{ path('entity.taxonomy_term.canonical', {'taxonomy_term': content.field_listing_location['#items'][0].entity.id}) }}">{{ content.field_listing_location[0]['#title'] }}</a></div>
+                        </div>
+                      </div>
+                    {% endif %}
+                    {% if content.field_listing_type|render %}
+                      <div class="w-half">{{ content.field_listing_type }}</div>
+                    {% endif %}
+                    {% if content.field_listing_category|render %}
+                      <div class="w-half">
+                        <div class="field">
+                          <div class="field__label">{{ content.field_listing_category['#title'] }}</div>
+                          <div><a href="{{ path('entity.taxonomy_term.canonical', {'taxonomy_term': content.field_listing_category['#items'][0].entity.id}) }}">{{ content.field_listing_category[0]['#title'] }}</a></div>
+                        </div>
+                      </div>
+                    {% endif %}
+                  </li>
+                </ul>
+              </div>
+            </div>  
+          {% endif %}  
+
+          {% if content.field_listing_type|render %}
+            <div class="listing-info-block listing-nav-inner" id="listing-description">
+              <div class="title">{{ '建築物資訊'|t }}</div>
+              <div class="block-content">
+                <ul class="building-info">
+                  <li class="listing-info-details">
+                    {% if content.field_listing_building_type|render %}
+                      <div class="w-half">{{ content.field_listing_building_type }}</div>
+                    {% endif %}
+                    {% if content.field_listing_housing_type|render %}
+                      <div class="w-half">{{ content.field_listing_housing_type }}</div>
+                    {% endif %}
+                    {% if content.field_listing_building_age|render %}
+                      <div class="w-half">{{ content.field_listing_building_age }}</div>
+                    {% endif %}
+                    {% if content.field_listing_building_facing|render %}
+                      <div class="w-half">{{ content.field_listing_building_facing }}</div>
+                    {% endif %}
+                    {% if content.field_listing_building_unit|render %}
+                      <div class="w-half">
+                        <div class="field">
+                          <div class="field__label">{{'該層戶數'|t}}</div>
+                          <div>{{ content.field_listing_building_unit.0 }}</div>
+                        </div>
+                      </div>
+                    {% endif %}
+                    {% if content.field_listing_building_elevator|render %}
+                      <div class="w-half">
+                        <div class="field">
+                          <div class="field__label">{{'電梯'|t}}</div>
+                          <div>{{'共用 '|t}}{{ content.field_listing_building_elevator.0 }}</div>
+                        </div>
+                      </div>
+                    {% endif %}
+                    {% if content.field_listing_building_cargo|render %}
+                      <div class="w-half">
+                        <div class="field">
+                          <div class="field__label">{{'貨梯'|t}}</div>
+                          <div>{{'共用 '|t}}{{ content.field_listing_building_cargo.0 }}</div>
+                        </div>
+                      </div>
+                    {% endif %}
+                    {% if content.field_listing_floor|render %}
+                      <div class="w-half">{{ content.field_listing_floor }}</div>
+                    {% endif %}
+                    {% if content.field_listing_building_floor|render %}
+                      <div class="w-half">{{ content.field_listing_building_floor }}</div>
+                    {% endif %}
+                    {% if content.field_listing_staging|render %}
+                      <div class="w-half">{{ content.field_listing_staging }}</div>
+                    {% endif %}
+                    {% if content.field_listing_oa|render %}
+                      <div class="w-half">{{ content.field_listing_oa }}</div>
+                    {% endif %}
+                    {% if content.field_listing_building_ac|render %}
+                      <div class="w-half">
+                        <div class="field">
+                          <div class="field__label">{{ content.field_listing_building_ac['#title'] }}</div>
+                          <div><i class="far fa-check-square"></i>{{ content.field_listing_building_ac.0 }}
+                            {% if content.field_listing_building_ac.1|render %}
+                              <i class="far fa-check-square"></i>{{ content.field_listing_building_ac.1 }}
+                            {% endif %}
+                          </div>
+                        </div>
+                      </div>
+                    {% endif %}
+                    {% if content.field_listing_building_restroom|render %}
+                      <div class="w-half">{{ content.field_listing_building_restroom }}</div>
+                    {% endif %}
+                    {% if content.field_listing_mrt|render %}
+                      <div class="w-half">{{ content.field_listing_mrt }}</div>
+                    {% endif %}
+                    {% if content.field_listing_building_garage|render %}
+                      <div class="w-half">{{ content.field_listing_building_garage }}</div>
+                    {% endif %}
+                    {% if content.field_listing_building_security|render %}
+                      <div class="w-half">
+                        <div class="field">
+                          <div class="field__label">{{ content.field_listing_building_security['#title'] }}</div>
+                          <div><i class="far fa-check-square"></i>{{ content.field_listing_building_security.0 }}
+                          {% if content.field_listing_building_security.1|render %}
+                            <i class="far fa-check-square"></i>{{ content.field_listing_building_security.1 }}
+                          {% endif %}</div>
+                        </div>
+                      </div>
+                    {% endif %}
+                    {% if content.field_listing_building_structure|render %}
+                      <div class="w-half">{{ content.field_listing_building_structure }}</div>
+                    {% endif %}
+                    {% if content.field_listing_building_exterior|render %}
+                      <div class="w-half">{{ content.field_listing_building_exterior }}</div>
+                    {% endif %}
+                  </li>
+                </ul>
+              </div>
+            </div>
+          {% endif %}
+
+          {% if content.field_listing_type|render %}
+            <div class="listing-info-block listing-nav-inner" id="listing-description">
+              <div class="title">{{ '地政資訊'|t }}</div>
+              <div class="block-content">
+                <ul class="building-info">
+                  <li class="listing-info-details">
+                    {% if content.field_listing_building_registry|render %}
+                      <div class="w-half">{{ content.field_listing_building_registry }}</div>
+                    {% endif %}
+                    {% if content.field_listing_land_registry|render %}
+                      <div class="w-half">{{ content.field_listing_land_registry }}</div>
+                    {% endif %}
+                    {% if content.field_listing_building_main|render %}
+                      <div class="w-half">{{ content.field_listing_building_main }}</div>
+                    {% endif %}
+                    {% if content.field_listing_building_attach|render %}
+                      <div class="w-half">{{ content.field_listing_building_attach }}</div>
+                    {% endif %}
+                    {% if content.field_listing_building_arcade|render %}
+                      <div class="w-half">{{ content.field_listing_building_arcade }}</div>
+                    {% endif %}
+                    {% if content.field_listing_building_headup|render %}
+                      <div class="w-half">{{ content.field_listing_building_headup }}</div>
+                    {% endif %}
+                    {% if content.field_listing_public_facility|render %}
+                      <div class="w-half">{{ content.field_listing_public_facility }}</div>
+                    {% endif %}
+                    {% if content.field_listing_pa_radio|render %}
+                      <div class="w-half">{{ content.field_listing_pa_radio }}</div>
+                    {% endif %}
+                    {% if content.field_listing_land_registry|render %}
+                      <div class="w-half">{{ content.field_listing_land_registry }}</div>
+                    {% endif %}
+                    {% if content.field_listing_registry_record|render %}
+                      <div class="w-half">{{ content.field_listing_registry_record }}</div>
+                    {% endif %}
+                  </li>
+                </ul>
+                {% if content.field_listing_divide_notice|render %}
+                    <div class="listing-land-notify">{{ content.field_listing_divide_notice.0 }}</div>
+                {% endif %} 
+              </div>
+            </div>
+          {% endif %}
+          {% if content.field_listing_features|render %}
+            <div class="listing-info-block listing-description" id="listing-description">
+              <div class="title">{{ '特色說明'|t }}</div>
+              <div class="block-content">
+                {{ content.field_listing_features.0 }}
+              </div>
+            </div>  
+          {% endif %}
+
+          <div class="listing-info-block listing-location" id="listing-location">
+            <div class="title">{{ '物件位置'|t }}</div>
+            <div class="block-content">
+              <div class="listing-location-taxonomy">{{ content.field_listing_location }}</div>
+              <div class="listing-main-map" id="listing-main-map"></div>
+              <div class="listing-items hidden">
+                <div class="listing-block">
+                  <div class="listing-data hidden">
+                    {{ content.field_listing_category }}
+                    <span class="data-lat">{{node.field_listing_map.lat}}</span>
+                    <span class="data-lon">{{node.field_listing_map.lon}}</span>
+                    <span class="data-html">
+                      <span class="gva-map-content-popup">
+                        <span class="image">
+                          <img src="{{ node.field_listing_image.entity.uri.value | image_style('small') }}" />
+                        </span>
+                        <span class="content-inner">
+                          <span class="title"><a href="{{ url }}" rel="bookmark">{{ node.title.value }}</a></span>
+                          {% if node.field_listing_address_show.value %}
+                            <span class="address"><i class="icon la la-map"></i>{{ conAddress|striptags }}</span>
+                          {% endif %}
+                        </span>  
+                      </span>
+                    </span>
+                  </div>
+                </div>  
+              </div>
+            </div>
+          </div>
+          {% if content.field_listing_video|render %}
+            <div class="listing-info-block listing-video" id="listing-video">
+              <div class="title">{{ '物件影片'|t }}</div>
+              <div class="block-content">
+                {{ listing_video|raw }}
+              </div>  
+            </div>
+          {% endif %}
+          {% if content.field_management_attachments|render %}
+            <div class="listing-info-block listing-description" id="listing-description">
+              <div class="title">{{ '物件其他資料'|t }}</div>
+              <div class="block-content">
+                {{ content.field_management_attachments }}
+              </div>  
+            </div>
+          {% endif %}
+          {% if content.field_listing_owner|render %}
+            <div class="listing-info-block listing-description" id="listing-description">
+              <div class="title">{{ '屋主資訊'|t }}</div>
+              <div class="block-content">
+                <ul class="building-info">
+                  <li class="listing-info-details">
+                    {% if content.field_listing_owner|render %}
+                      <div class="w-half">{{ content.field_listing_owner }}</div>
+                    {% endif %}
+                    {% if content.field_listing_owner_phone|render %}
+                      <div class="w-half">{{ content.field_listing_owner_phone }}</div>
+                    {% endif %}
+                    {% if content.field_listing_owner_fax|render %}
+                      <div class="w-half">{{ content.field_listing_owner_fax }}</div>
+                    {% endif %}
+                    {% if content.field_listing_owner_email|render %}
+                      <div class="w-half">{{ content.field_listing_owner_email }}</div>
+                    {% endif %}
+                    {% if content.field_listing_agency|render %}
+                      <div class="w-half">{{ content.field_listing_agency }}</div>
+                    {% endif %}
+                    {% if content.field_listing_agency_phone|render %}
+                      <div class="w-half">{{ content.field_listing_agency_phone }}</div>
+                    {% endif %}
+                    {% if content.field_listing_agency_fax|render %}
+                      <div class="w-half">{{ content.field_listing_agency_fax }}</div>
+                    {% endif %}
+                    {% if content.field_listing_agency_email|render %}
+                      <div class="w-half">{{ content.field_listing_agency_email }}</div>
+                    {% endif %}
+                  </li>
+                </ul>
+                <div class="field-note">
+                  {% if content.field_listing_owner_note|render %}
+                    {{ content.field_listing_owner_note }}
+                  {% endif %}
+                </div>
+              </div>
+            </div>
+          {% endif %}
+
+          {% if content.field_management_note|render %}
+            <div class="listing-info-block listing-description" id="listing-description">
+              <div class="title">{{ '內部管理'|t }}</div>
+              <div class="block-content">
+                <ul class="building-info">
+                  <li class="listing-info-details">
+                    {% if content.field_listing_agent|render %}
+                      <div class="w-half">{{ content.field_listing_agent }}</div>
+                    {% endif %}
+                    {% if content.field_assistant|render %}
+                      <div class="w-half">{{ content.field_assistant }}</div>
+                    {% endif %}
+                    {% if content.field_manager|render %}
+                      <div class="w-half">{{ content.field_manager }}</div>
+                    {% endif %}
+                  </li>
+                </ul>
+                <div class="field-note">
+                  {% if content.field_management_note|render %}
+                   {{ content.field_management_note }}
+                  {% endif %}
+                </div>
+              </div>
+            </div>
+          {% endif %}
+        </div>  
+      </div>
+      {# Right Side Block #}
+      <div class="col-xl-4 col-lg-4 col-md-12 col-sm-12 col-xs-12">
+        <div class="listing-content-main">
+          <div class="listing-info-block business-info">
+            <div class="title">{{ '價格資訊'|t }}</div>
+            <div class="block-content">
+              <ul class="business-info">
+                <li class="listing-price-info">
+                  {% if content.field_listing_price_total|render %}
+                    <div class="w-whole">
+                      {% if node.field_listing_type.target_id == '130' %}
+                        <div class="listing-price">
+                          {{node.field_listing_total_price.0.value|number_format}}<span>{{'元/月'|t}}</span></div>
+                      {% else %}
+                        <div class="listing-price">
+                          {{node.field_listing_total_price.0.value|number_format}}<span>{{'元'|t}}</span></div>
+                      {% endif %}
+                    </div>
+                  {% endif %}
+                  {% if content.field_listing_tax|render %}
+                    <div class="w-whole">{{ content.field_listing_tax }}</div>
+                  {% endif %}
+                  {% if content.field_listing_price_average|render %}
+                    <div class="w-whole">{{ content.field_listing_price_average }}</div>
+                  {% endif %}
+                  {% if content.field_listing_safe_deposit|render %}
+                    <div class="w-whole">{{ content.field_listing_safe_deposit }}</div>
+                  {% endif %}
+                  {% if field_listing_security_fee|render %}
+                    <div class="w-whole">{{ field_listing_security_fee }}</div>
+                  {% endif %}
+                  {% if content.field_listing_movein_date|render %}
+                    <div class="w-whole">{{ content.field_listing_movein_date }}</div>
+                  {% endif %}
+                  {% if content.field_listing_service_fee|render %}
+                    <div class="w-whole">{{ content.field_listing_service_fee }}</div>
+                  {% endif %}
+                </li>
+              </ul>
+
+              
+            </div>  
+          </div>
+
+          {% if content.field_promo_tags|render %}
+            <div class="listing-info-block listing-tags">
+              <div class="title">{{ '熱門看點'|t }}</div>
+              <div class="block-content">
+                {% for item in content.field_promo_tags %}
+                  {% if item['#title'] %}
+                    <a href="{{ item['#url']}}" class="promo-link-item">{{ item['#title']  }}</a>
+                  {% endif %}
+                {% endfor %}
+              </div>
+            </div>
+          {% endif %}
+
+          {{ listing_sidebar }}
+
+        </div>  
+
+      </div>
+    </div>
+  </div>  
+</article>
+<script>
+  map_init('single');
+</script>
+
+<!-- End Display article for detail page -->
+{% endif %}
+
