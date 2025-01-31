@@ -1,0 +1,33 @@
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.storage.node.field_listing_map
+    - node.type.listing
+  module:
+    - google_map_field
+id: node.listing.field_listing_map
+field_name: field_listing_map
+entity_type: node
+bundle: listing
+label: 'Listing Map'
+description: ''
+required: false
+translatable: false
+default_value:
+  -
+    preview: ''
+    actions: {  }
+    lat: '51.5123312973236'
+    name: ''
+    lon: '-0.1334831640624543'
+    zoom: '9'
+    type: roadmap
+    width: 100%
+    height: 450px
+    marker: '1'
+    controls: '1'
+    infowindow: ''
+default_value_callback: ''
+settings: {  }
+field_type: google_map_field

@@ -1,0 +1,2284 @@
+langcode: en
+status: true
+dependencies:
+  config:
+    - core.entity_view_mode.node.teaser
+    - core.entity_view_mode.node.teaser_2
+    - node.type.listing
+    - taxonomy.vocabulary.amenities
+    - taxonomy.vocabulary.listing_category
+    - taxonomy.vocabulary.listing_locations
+  module:
+    - better_exposed_filters
+    - gavias_view
+    - node
+    - taxonomy
+    - user
+    - views_infinite_scroll
+id: listing_content
+label: 'Listing Content'
+module: views
+description: ''
+tag: ''
+base_table: node_field_data
+base_field: nid
+core: 8.x
+display:
+  default:
+    display_plugin: default
+    id: default
+    display_title: Master
+    position: 0
+    display_options:
+      access:
+        type: perm
+        options:
+          perm: 'access content'
+      cache:
+        type: tag
+        options: {  }
+      query:
+        type: views_query
+        options:
+          disable_sql_rewrite: false
+          distinct: false
+          replica: false
+          query_comment: ''
+          query_tags: {  }
+      exposed_form:
+        type: basic
+        options:
+          submit_button: Apply
+          reset_button: false
+          reset_button_label: Reset
+          exposed_sorts_label: 'Sort by'
+          expose_sort_order: true
+          sort_asc_label: Asc
+          sort_desc_label: Desc
+      pager:
+        type: infinite_scroll
+        options:
+          items_per_page: 3
+          offset: 0
+          id: 0
+          total_pages: null
+          tags:
+            previous: '‹ Previous'
+            next: 'Next ›'
+          expose:
+            items_per_page: false
+            items_per_page_label: 'Items per page'
+            items_per_page_options: '5, 10, 25, 50'
+            items_per_page_options_all: false
+            items_per_page_options_all_label: '- All -'
+            offset: false
+            offset_label: Offset
+          views_infinite_scroll:
+            button_text: 'Load More'
+            automatically_load_content: false
+      style:
+        type: gvagrid
+        options:
+          row_class: ''
+          default_row_class: true
+          uses_fields: false
+          items_lg: '2'
+          items_md: '2'
+          items_sm: '2'
+          items_xs: '2'
+          el_class: ''
+          el_id: ''
+      row:
+        type: 'entity:node'
+        options:
+          relationship: none
+          view_mode: teaser_2
+      fields:
+        title:
+          id: title
+          table: node_field_data
+          field: title
+          settings:
+            link_to_entity: true
+          plugin_id: field
+          relationship: none
+          group_type: group
+          admin_label: ''
+          label: ''
+          exclude: false
+          alter:
+            alter_text: false
+            text: ''
+            make_link: false
+            path: ''
+            absolute: false
+            external: false
+            replace_spaces: false
+            path_case: none
+            trim_whitespace: false
+            alt: ''
+            rel: ''
+            link_class: ''
+            prefix: ''
+            suffix: ''
+            target: ''
+            nl2br: false
+            max_length: 0
+            word_boundary: true
+            ellipsis: true
+            more_link: false
+            more_link_text: ''
+            more_link_path: ''
+            strip_tags: false
+            trim: false
+            preserve_tags: ''
+            html: false
+          element_type: ''
+          element_class: ''
+          element_label_type: ''
+          element_label_class: ''
+          element_label_colon: true
+          element_wrapper_type: ''
+          element_wrapper_class: ''
+          element_default_classes: true
+          empty: ''
+          hide_empty: false
+          empty_zero: false
+          hide_alter_empty: true
+          click_sort_column: value
+          type: string
+          group_column: value
+          group_columns: {  }
+          group_rows: true
+          delta_limit: 0
+          delta_offset: 0
+          delta_reversed: false
+          delta_first_last: false
+          multi_type: separator
+          separator: ', '
+          field_api_classes: false
+      filters:
+        status:
+          value: '1'
+          table: node_field_data
+          field: status
+          plugin_id: boolean
+          entity_type: node
+          entity_field: status
+          id: status
+          expose:
+            operator: ''
+          group: 1
+        type:
+          id: type
+          table: node_field_data
+          field: type
+          value:
+            listing: listing
+          entity_type: node
+          entity_field: type
+          plugin_id: bundle
+      sorts:
+        created:
+          id: created
+          table: node_field_data
+          field: created
+          relationship: none
+          group_type: group
+          admin_label: ''
+          order: DESC
+          exposed: false
+          expose:
+            label: 'Authored on'
+          granularity: second
+          entity_type: node
+          entity_field: created
+          plugin_id: date
+      title: 'Listing Content'
+      header: {  }
+      footer: {  }
+      empty: {  }
+      relationships: {  }
+      arguments: {  }
+      display_extenders: {  }
+    cache_metadata:
+      max-age: -1
+      contexts:
+        - 'languages:language_content'
+        - 'languages:language_interface'
+        - url.query_args
+        - 'user.node_grants:view'
+        - user.permissions
+      tags: {  }
+  block_1:
+    display_plugin: block
+    id: block_1
+    display_title: 'Listing Grid'
+    position: 3
+    display_options:
+      display_extenders: {  }
+      display_description: ''
+      style:
+        type: gvagrid
+        options:
+          row_class: ''
+          default_row_class: true
+          uses_fields: false
+          items_lg: '3'
+          items_md: '3'
+          items_sm: '2'
+          items_xs: '2'
+          el_class: ''
+          el_id: ''
+      defaults:
+        style: false
+        row: false
+        pager: false
+        empty: false
+      row:
+        type: 'entity:node'
+        options:
+          relationship: none
+          view_mode: teaser_2
+      pager:
+        type: infinite_scroll
+        options:
+          items_per_page: 6
+          offset: 0
+          id: 0
+          total_pages: null
+          tags:
+            previous: '‹ Previous'
+            next: 'Next ›'
+          expose:
+            items_per_page: false
+            items_per_page_label: 'Items per page'
+            items_per_page_options: '5, 10, 25, 50'
+            items_per_page_options_all: false
+            items_per_page_options_all_label: '- All -'
+            offset: false
+            offset_label: Offset
+          views_infinite_scroll:
+            button_text: 'Load More'
+            automatically_load_content: false
+      empty: {  }
+    cache_metadata:
+      max-age: -1
+      contexts:
+        - 'languages:language_content'
+        - 'languages:language_interface'
+        - url.query_args
+        - 'user.node_grants:view'
+        - user.permissions
+      tags: {  }
+  block_2:
+    display_plugin: block
+    id: block_2
+    display_title: 'Listing Grid II'
+    position: 4
+    display_options:
+      display_extenders: {  }
+      display_description: ''
+      style:
+        type: gvagrid
+        options:
+          row_class: ''
+          default_row_class: true
+          uses_fields: false
+          items_lg: '4'
+          items_md: '4'
+          items_sm: '2'
+          items_xs: '2'
+          el_class: ''
+          el_id: ''
+      defaults:
+        style: false
+        row: false
+        pager: false
+        empty: false
+        use_more: false
+        use_more_always: false
+        use_more_text: false
+        link_display: false
+        link_url: false
+      row:
+        type: 'entity:node'
+        options:
+          relationship: none
+          view_mode: teaser
+      pager:
+        type: some
+        options:
+          items_per_page: 8
+          offset: 0
+      empty: {  }
+      use_more: true
+      use_more_always: true
+      use_more_text: more
+      link_display: listing_map_one
+      link_url: ''
+    cache_metadata:
+      max-age: -1
+      contexts:
+        - 'languages:language_content'
+        - 'languages:language_interface'
+        - 'user.node_grants:view'
+        - user.permissions
+      tags: {  }
+  block_3:
+    display_plugin: block
+    id: block_3
+    display_title: 'Listing Carousel'
+    position: 5
+    display_options:
+      display_extenders: {  }
+      display_description: ''
+      style:
+        type: gvaowl
+        options:
+          row_class: ''
+          default_row_class: true
+          uses_fields: false
+          items: '3'
+          items_lg: '3'
+          items_md: '3'
+          items_sm: '2'
+          items_xs: '1'
+          loop: 1
+          speed: '800'
+          auto_play: 1
+          auto_play_speed: '1000'
+          auto_play_timeout: '3000'
+          auto_play_hover: 1
+          navigation: 1
+          rewind_nav: 0
+          pagination: 0
+          mouse_drag: 1
+          touch_drag: 1
+          el_class: ''
+          el_id: ''
+      defaults:
+        style: false
+        row: false
+        pager: false
+        empty: false
+        use_more: false
+        use_more_always: false
+        use_more_text: false
+        link_display: false
+        link_url: false
+      row:
+        type: 'entity:node'
+        options:
+          relationship: none
+          view_mode: teaser_2
+      pager:
+        type: some
+        options:
+          items_per_page: 8
+          offset: 0
+      empty: {  }
+      use_more: true
+      use_more_always: true
+      use_more_text: more
+      link_display: listing_map_one
+      link_url: ''
+    cache_metadata:
+      max-age: -1
+      contexts:
+        - 'languages:language_content'
+        - 'languages:language_interface'
+        - 'user.node_grants:view'
+        - user.permissions
+      tags: {  }
+  listing_filter_form:
+    display_plugin: page
+    id: listing_filter_form
+    display_title: 'Listing Filter'
+    position: 1
+    display_options:
+      display_extenders: {  }
+      display_description: ''
+      path: listings-filter
+      filters:
+        status:
+          value: '1'
+          table: node_field_data
+          field: status
+          plugin_id: boolean
+          entity_type: node
+          entity_field: status
+          id: status
+          expose:
+            operator: ''
+          group: 1
+        type:
+          id: type
+          table: node_field_data
+          field: type
+          value:
+            listing: listing
+          entity_type: node
+          entity_field: type
+          plugin_id: bundle
+          group: 1
+        title:
+          id: title
+          table: node_field_data
+          field: title
+          relationship: none
+          group_type: group
+          admin_label: ''
+          operator: word
+          value: ''
+          group: 1
+          exposed: true
+          expose:
+            operator_id: title_op
+            label: Title
+            description: ''
+            use_operator: false
+            operator: title_op
+            identifier: title
+            required: false
+            remember: false
+            multiple: false
+            remember_roles:
+              authenticated: authenticated
+              anonymous: '0'
+              administrator: '0'
+            placeholder: ''
+          is_grouped: false
+          group_info:
+            label: ''
+            description: ''
+            identifier: ''
+            optional: true
+            widget: select
+            multiple: false
+            remember: false
+            default_group: All
+            default_group_multiple: {  }
+            group_items: {  }
+          entity_type: node
+          entity_field: title
+          plugin_id: string
+        field_listing_category_target_id:
+          id: field_listing_category_target_id
+          table: node__field_listing_category
+          field: field_listing_category_target_id
+          relationship: none
+          group_type: group
+          admin_label: ''
+          operator: or
+          value: {  }
+          group: 1
+          exposed: true
+          expose:
+            operator_id: field_listing_category_target_id_op
+            label: 'All Categories'
+            description: ''
+            use_operator: false
+            operator: field_listing_category_target_id_op
+            identifier: field_listing_category_target_id
+            required: false
+            remember: false
+            multiple: false
+            remember_roles:
+              authenticated: authenticated
+              anonymous: '0'
+              administrator: '0'
+            reduce: false
+          is_grouped: false
+          group_info:
+            label: ''
+            description: ''
+            identifier: ''
+            optional: true
+            widget: select
+            multiple: false
+            remember: false
+            default_group: All
+            default_group_multiple: {  }
+            group_items: {  }
+          reduce_duplicates: false
+          type: select
+          limit: true
+          vid: listing_category
+          hierarchy: false
+          error_message: true
+          plugin_id: taxonomy_index_tid
+        field_listing_location_target_id:
+          id: field_listing_location_target_id
+          table: node__field_listing_location
+          field: field_listing_location_target_id
+          relationship: none
+          group_type: group
+          admin_label: ''
+          operator: or
+          value: {  }
+          group: 1
+          exposed: true
+          expose:
+            operator_id: field_listing_location_target_id_op
+            label: 'All Locations'
+            description: ''
+            use_operator: false
+            operator: field_listing_location_target_id_op
+            identifier: field_listing_location_target_id
+            required: false
+            remember: false
+            multiple: false
+            remember_roles:
+              authenticated: authenticated
+              anonymous: '0'
+              administrator: '0'
+            reduce: false
+          is_grouped: false
+          group_info:
+            label: ''
+            description: ''
+            identifier: ''
+            optional: true
+            widget: select
+            multiple: false
+            remember: false
+            default_group: All
+            default_group_multiple: {  }
+            group_items: {  }
+          reduce_duplicates: false
+          type: select
+          limit: true
+          vid: listing_locations
+          hierarchy: true
+          error_message: true
+          plugin_id: taxonomy_index_tid
+      defaults:
+        filters: false
+        filter_groups: false
+        header: false
+        css_class: false
+        sorts: false
+      filter_groups:
+        operator: AND
+        groups:
+          1: AND
+      exposed_block: true
+      header: {  }
+      css_class: listing-filter-form
+      sorts:
+        created:
+          id: created
+          table: node_field_data
+          field: created
+          relationship: none
+          group_type: group
+          admin_label: ''
+          order: DESC
+          exposed: false
+          expose:
+            label: 'Authored on'
+          granularity: second
+          entity_type: node
+          entity_field: created
+          plugin_id: date
+    cache_metadata:
+      max-age: -1
+      contexts:
+        - 'languages:language_content'
+        - 'languages:language_interface'
+        - url
+        - url.query_args
+        - user
+        - 'user.node_grants:view'
+        - user.permissions
+      tags: {  }
+  listing_full_one:
+    display_plugin: page
+    id: listing_full_one
+    display_title: 'Listing Full Page I'
+    position: 8
+    display_options:
+      display_extenders: {  }
+      display_description: ''
+      path: listings-3
+      filters:
+        status:
+          value: '1'
+          table: node_field_data
+          field: status
+          plugin_id: boolean
+          entity_type: node
+          entity_field: status
+          id: status
+          expose:
+            operator: ''
+          group: 1
+        type:
+          id: type
+          table: node_field_data
+          field: type
+          value:
+            listing: listing
+          entity_type: node
+          entity_field: type
+          plugin_id: bundle
+          group: 1
+        title:
+          id: title
+          table: node_field_data
+          field: title
+          relationship: none
+          group_type: group
+          admin_label: ''
+          operator: word
+          value: ''
+          group: 1
+          exposed: true
+          expose:
+            operator_id: title_op
+            label: Title
+            description: ''
+            use_operator: false
+            operator: title_op
+            identifier: title
+            required: false
+            remember: false
+            multiple: false
+            remember_roles:
+              authenticated: authenticated
+              anonymous: '0'
+              administrator: '0'
+            placeholder: ''
+          is_grouped: false
+          group_info:
+            label: ''
+            description: ''
+            identifier: ''
+            optional: true
+            widget: select
+            multiple: false
+            remember: false
+            default_group: All
+            default_group_multiple: {  }
+            group_items: {  }
+          entity_type: node
+          entity_field: title
+          plugin_id: string
+        field_listing_category_target_id:
+          id: field_listing_category_target_id
+          table: node__field_listing_category
+          field: field_listing_category_target_id
+          relationship: none
+          group_type: group
+          admin_label: ''
+          operator: or
+          value: {  }
+          group: 1
+          exposed: true
+          expose:
+            operator_id: field_listing_category_target_id_op
+            label: 'All Categories'
+            description: ''
+            use_operator: false
+            operator: field_listing_category_target_id_op
+            identifier: field_listing_category_target_id
+            required: false
+            remember: false
+            multiple: false
+            remember_roles:
+              authenticated: authenticated
+              anonymous: '0'
+              administrator: '0'
+            reduce: false
+          is_grouped: false
+          group_info:
+            label: ''
+            description: ''
+            identifier: ''
+            optional: true
+            widget: select
+            multiple: false
+            remember: false
+            default_group: All
+            default_group_multiple: {  }
+            group_items: {  }
+          reduce_duplicates: false
+          type: select
+          limit: true
+          vid: listing_category
+          hierarchy: false
+          error_message: true
+          plugin_id: taxonomy_index_tid
+        field_listing_location_target_id:
+          id: field_listing_location_target_id
+          table: node__field_listing_location
+          field: field_listing_location_target_id
+          relationship: none
+          group_type: group
+          admin_label: ''
+          operator: or
+          value: {  }
+          group: 1
+          exposed: true
+          expose:
+            operator_id: field_listing_location_target_id_op
+            label: 'All Locations'
+            description: ''
+            use_operator: false
+            operator: field_listing_location_target_id_op
+            identifier: field_listing_location_target_id
+            required: false
+            remember: false
+            multiple: false
+            remember_roles:
+              authenticated: authenticated
+              anonymous: '0'
+              administrator: '0'
+            reduce: false
+          is_grouped: false
+          group_info:
+            label: ''
+            description: ''
+            identifier: ''
+            optional: true
+            widget: select
+            multiple: false
+            remember: false
+            default_group: All
+            default_group_multiple: {  }
+            group_items: {  }
+          reduce_duplicates: false
+          type: select
+          limit: true
+          vid: listing_locations
+          hierarchy: true
+          error_message: true
+          plugin_id: taxonomy_index_tid
+        field_listing_amenities_target_id:
+          id: field_listing_amenities_target_id
+          table: node__field_listing_amenities
+          field: field_listing_amenities_target_id
+          relationship: none
+          group_type: group
+          admin_label: ''
+          operator: or
+          value: {  }
+          group: 1
+          exposed: true
+          expose:
+            operator_id: field_listing_amenities_target_id_op
+            label: 'Listing Amenities'
+            description: ''
+            use_operator: false
+            operator: field_listing_amenities_target_id_op
+            identifier: field_listing_amenities_target_id
+            required: false
+            remember: false
+            multiple: true
+            remember_roles:
+              authenticated: authenticated
+              anonymous: '0'
+              administrator: '0'
+            reduce: false
+          is_grouped: false
+          group_info:
+            label: ''
+            description: ''
+            identifier: ''
+            optional: true
+            widget: select
+            multiple: false
+            remember: false
+            default_group: All
+            default_group_multiple: {  }
+            group_items: {  }
+          reduce_duplicates: false
+          type: select
+          limit: true
+          vid: amenities
+          hierarchy: false
+          error_message: false
+          plugin_id: taxonomy_index_tid
+      defaults:
+        filters: false
+        filter_groups: false
+        use_ajax: false
+        css_class: false
+        exposed_form: false
+        sorts: false
+        empty: false
+        pager: false
+        style: false
+        row: false
+      filter_groups:
+        operator: AND
+        groups:
+          1: AND
+      exposed_block: false
+      use_ajax: true
+      css_class: ''
+      exposed_form:
+        type: bef
+        options:
+          submit_button: Apply
+          reset_button: true
+          reset_button_label: Reset
+          exposed_sorts_label: 'Sort by'
+          expose_sort_order: true
+          sort_asc_label: Asc
+          sort_desc_label: Desc
+          input_required: false
+          text_input_required: 'Select any filter and click on Apply to see results'
+          bef:
+            general:
+              allow_secondary: false
+              secondary_label: 'Advanced options'
+              autosubmit: false
+              autosubmit_exclude_textfield: false
+              autosubmit_hide: false
+            sort:
+              bef_format: default
+              advanced:
+                collapsible: false
+                collapsible_label: 'Sort options'
+                combine: false
+                combine_rewrite: ''
+                reset: false
+                reset_label: ''
+                is_secondary: false
+            title:
+              bef_format: default
+              more_options:
+                is_secondary: false
+                placeholder_text: ''
+            field_listing_category_target_id:
+              bef_format: default
+              more_options:
+                bef_select_all_none: false
+                bef_collapsible: false
+                is_secondary: false
+                rewrite:
+                  filter_rewrite_values: ''
+            field_listing_location_target_id:
+              bef_format: default
+              more_options:
+                is_secondary: false
+                placeholder_text: ''
+                rewrite:
+                  filter_rewrite_values: ''
+            field_listing_amenities_target_id:
+              bef_format: bef
+              more_options:
+                bef_select_all_none: false
+                bef_collapsible: false
+                is_secondary: false
+                rewrite:
+                  filter_rewrite_values: ''
+          text_input_required_format: full_html
+      sorts:
+        created:
+          id: created
+          table: node_field_data
+          field: created
+          relationship: none
+          group_type: group
+          admin_label: ''
+          order: DESC
+          exposed: true
+          expose:
+            label: 'Date Published'
+          granularity: second
+          entity_type: node
+          entity_field: created
+          plugin_id: date
+        changed:
+          id: changed
+          table: node_field_data
+          field: changed
+          relationship: none
+          group_type: group
+          admin_label: ''
+          order: DESC
+          exposed: true
+          expose:
+            label: 'Date Updated'
+          granularity: second
+          entity_type: node
+          entity_field: changed
+          plugin_id: date
+        title:
+          id: title
+          table: node_field_data
+          field: title
+          relationship: none
+          group_type: group
+          admin_label: ''
+          order: DESC
+          exposed: true
+          expose:
+            label: Title
+          entity_type: node
+          entity_field: title
+          plugin_id: standard
+        field_listing_category_target_id:
+          id: field_listing_category_target_id
+          table: node__field_listing_category
+          field: field_listing_category_target_id
+          relationship: none
+          group_type: group
+          admin_label: ''
+          order: ASC
+          exposed: true
+          expose:
+            label: Category
+          plugin_id: standard
+      empty:
+        area:
+          id: area
+          table: views
+          field: area
+          relationship: none
+          group_type: group
+          admin_label: ''
+          empty: true
+          tokenize: false
+          content:
+            value: '<div class="alert alert-warning">sorry, we couldn''t find any results</div>'
+            format: html_without_editor
+          plugin_id: text
+      pager:
+        type: infinite_scroll
+        options:
+          items_per_page: 6
+          offset: 0
+          id: 0
+          total_pages: null
+          tags:
+            previous: '‹ Previous'
+            next: 'Next ›'
+          expose:
+            items_per_page: false
+            items_per_page_label: 'Items per page'
+            items_per_page_options: '5, 10, 25, 50'
+            items_per_page_options_all: false
+            items_per_page_options_all_label: '- All -'
+            offset: false
+            offset_label: Offset
+          views_infinite_scroll:
+            button_text: 'Load More'
+            automatically_load_content: false
+      style:
+        type: gvagrid
+        options:
+          row_class: ''
+          default_row_class: true
+          uses_fields: false
+          items_lg: '2'
+          items_md: '2'
+          items_sm: '2'
+          items_xs: '2'
+          el_class: ''
+          el_id: ''
+      row:
+        type: 'entity:node'
+        options:
+          relationship: none
+          view_mode: teaser_2
+    cache_metadata:
+      max-age: -1
+      contexts:
+        - 'languages:language_content'
+        - 'languages:language_interface'
+        - url
+        - url.query_args
+        - 'url.query_args:sort_by'
+        - 'url.query_args:sort_order'
+        - user
+        - 'user.node_grants:view'
+        - user.permissions
+      tags: {  }
+  listing_full_two:
+    display_plugin: page
+    id: listing_full_two
+    display_title: 'Listing Full Page ||'
+    position: 8
+    display_options:
+      display_extenders: {  }
+      display_description: ''
+      path: listings-4
+      filters:
+        status:
+          value: '1'
+          table: node_field_data
+          field: status
+          plugin_id: boolean
+          entity_type: node
+          entity_field: status
+          id: status
+          expose:
+            operator: ''
+          group: 1
+        type:
+          id: type
+          table: node_field_data
+          field: type
+          value:
+            listing: listing
+          entity_type: node
+          entity_field: type
+          plugin_id: bundle
+          group: 1
+        title:
+          id: title
+          table: node_field_data
+          field: title
+          relationship: none
+          group_type: group
+          admin_label: ''
+          operator: word
+          value: ''
+          group: 1
+          exposed: true
+          expose:
+            operator_id: title_op
+            label: Title
+            description: ''
+            use_operator: false
+            operator: title_op
+            identifier: title
+            required: false
+            remember: false
+            multiple: false
+            remember_roles:
+              authenticated: authenticated
+              anonymous: '0'
+              administrator: '0'
+            placeholder: ''
+          is_grouped: false
+          group_info:
+            label: ''
+            description: ''
+            identifier: ''
+            optional: true
+            widget: select
+            multiple: false
+            remember: false
+            default_group: All
+            default_group_multiple: {  }
+            group_items: {  }
+          entity_type: node
+          entity_field: title
+          plugin_id: string
+        field_listing_category_target_id:
+          id: field_listing_category_target_id
+          table: node__field_listing_category
+          field: field_listing_category_target_id
+          relationship: none
+          group_type: group
+          admin_label: ''
+          operator: or
+          value: {  }
+          group: 1
+          exposed: true
+          expose:
+            operator_id: field_listing_category_target_id_op
+            label: 'All Categories'
+            description: ''
+            use_operator: false
+            operator: field_listing_category_target_id_op
+            identifier: field_listing_category_target_id
+            required: false
+            remember: false
+            multiple: false
+            remember_roles:
+              authenticated: authenticated
+              anonymous: '0'
+              administrator: '0'
+            reduce: false
+          is_grouped: false
+          group_info:
+            label: ''
+            description: ''
+            identifier: ''
+            optional: true
+            widget: select
+            multiple: false
+            remember: false
+            default_group: All
+            default_group_multiple: {  }
+            group_items: {  }
+          reduce_duplicates: false
+          type: select
+          limit: true
+          vid: listing_category
+          hierarchy: false
+          error_message: true
+          plugin_id: taxonomy_index_tid
+        field_listing_location_target_id:
+          id: field_listing_location_target_id
+          table: node__field_listing_location
+          field: field_listing_location_target_id
+          relationship: none
+          group_type: group
+          admin_label: ''
+          operator: or
+          value: {  }
+          group: 1
+          exposed: true
+          expose:
+            operator_id: field_listing_location_target_id_op
+            label: 'All Locations'
+            description: ''
+            use_operator: false
+            operator: field_listing_location_target_id_op
+            identifier: field_listing_location_target_id
+            required: false
+            remember: false
+            multiple: false
+            remember_roles:
+              authenticated: authenticated
+              anonymous: '0'
+              administrator: '0'
+            reduce: false
+          is_grouped: false
+          group_info:
+            label: ''
+            description: ''
+            identifier: ''
+            optional: true
+            widget: select
+            multiple: false
+            remember: false
+            default_group: All
+            default_group_multiple: {  }
+            group_items: {  }
+          reduce_duplicates: false
+          type: select
+          limit: true
+          vid: listing_locations
+          hierarchy: true
+          error_message: true
+          plugin_id: taxonomy_index_tid
+        field_listing_amenities_target_id:
+          id: field_listing_amenities_target_id
+          table: node__field_listing_amenities
+          field: field_listing_amenities_target_id
+          relationship: none
+          group_type: group
+          admin_label: ''
+          operator: or
+          value: {  }
+          group: 1
+          exposed: true
+          expose:
+            operator_id: field_listing_amenities_target_id_op
+            label: 'Listing Amenities'
+            description: ''
+            use_operator: false
+            operator: field_listing_amenities_target_id_op
+            identifier: field_listing_amenities_target_id
+            required: false
+            remember: false
+            multiple: true
+            remember_roles:
+              authenticated: authenticated
+              anonymous: '0'
+              administrator: '0'
+            reduce: false
+          is_grouped: false
+          group_info:
+            label: ''
+            description: ''
+            identifier: ''
+            optional: true
+            widget: select
+            multiple: false
+            remember: false
+            default_group: All
+            default_group_multiple: {  }
+            group_items: {  }
+          reduce_duplicates: false
+          type: select
+          limit: true
+          vid: amenities
+          hierarchy: false
+          error_message: false
+          plugin_id: taxonomy_index_tid
+      defaults:
+        filters: false
+        filter_groups: false
+        use_ajax: false
+        css_class: false
+        exposed_form: false
+        sorts: false
+        empty: false
+        pager: false
+        style: false
+        row: false
+      filter_groups:
+        operator: AND
+        groups:
+          1: AND
+      exposed_block: false
+      use_ajax: true
+      css_class: ''
+      exposed_form:
+        type: bef
+        options:
+          submit_button: Apply
+          reset_button: true
+          reset_button_label: Reset
+          exposed_sorts_label: 'Sort by'
+          expose_sort_order: true
+          sort_asc_label: Asc
+          sort_desc_label: Desc
+          input_required: false
+          text_input_required: 'Select any filter and click on Apply to see results'
+          bef:
+            general:
+              allow_secondary: false
+              secondary_label: 'Advanced options'
+              autosubmit: false
+              autosubmit_exclude_textfield: false
+              autosubmit_hide: false
+            sort:
+              bef_format: default
+              advanced:
+                collapsible: false
+                collapsible_label: 'Sort options'
+                combine: false
+                combine_rewrite: ''
+                reset: false
+                reset_label: ''
+                is_secondary: false
+            title:
+              bef_format: default
+              more_options:
+                is_secondary: false
+                placeholder_text: ''
+            field_listing_category_target_id:
+              bef_format: default
+              more_options:
+                bef_select_all_none: false
+                bef_collapsible: false
+                is_secondary: false
+                rewrite:
+                  filter_rewrite_values: ''
+            field_listing_location_target_id:
+              bef_format: default
+              more_options:
+                is_secondary: false
+                placeholder_text: ''
+                rewrite:
+                  filter_rewrite_values: ''
+            field_listing_amenities_target_id:
+              bef_format: bef
+              more_options:
+                bef_select_all_none: false
+                bef_collapsible: false
+                is_secondary: false
+                rewrite:
+                  filter_rewrite_values: ''
+          text_input_required_format: full_html
+      sorts:
+        created:
+          id: created
+          table: node_field_data
+          field: created
+          relationship: none
+          group_type: group
+          admin_label: ''
+          order: DESC
+          exposed: true
+          expose:
+            label: 'Date Published'
+          granularity: second
+          entity_type: node
+          entity_field: created
+          plugin_id: date
+        changed:
+          id: changed
+          table: node_field_data
+          field: changed
+          relationship: none
+          group_type: group
+          admin_label: ''
+          order: DESC
+          exposed: true
+          expose:
+            label: 'Date Updated'
+          granularity: second
+          entity_type: node
+          entity_field: changed
+          plugin_id: date
+        title:
+          id: title
+          table: node_field_data
+          field: title
+          relationship: none
+          group_type: group
+          admin_label: ''
+          order: DESC
+          exposed: true
+          expose:
+            label: Title
+          entity_type: node
+          entity_field: title
+          plugin_id: standard
+        field_listing_category_target_id:
+          id: field_listing_category_target_id
+          table: node__field_listing_category
+          field: field_listing_category_target_id
+          relationship: none
+          group_type: group
+          admin_label: ''
+          order: ASC
+          exposed: true
+          expose:
+            label: Category
+          plugin_id: standard
+      empty:
+        area:
+          id: area
+          table: views
+          field: area
+          relationship: none
+          group_type: group
+          admin_label: ''
+          empty: true
+          tokenize: false
+          content:
+            value: "<div class=\"main-map-wrapper\">\r\n    <div id=\"listing-main-map\" class=\"listing-main-map\" style=\"height: 600px;\"></div>\r\n</div>\r\n<div class=\"map-layout map-layout-wrapper clearfix\">\r\n    <div class=\"listing-items gva-view-grid-inner\"><div class=\"alert alert-warning\">No found results</div></div> \r\n</div> \r\n<script type=\"text/javascript\">map_init();</script>"
+            format: html_without_editor
+          plugin_id: text
+      pager:
+        type: infinite_scroll
+        options:
+          items_per_page: 6
+          offset: 0
+          id: 0
+          total_pages: null
+          tags:
+            previous: '‹ Previous'
+            next: 'Next ›'
+          expose:
+            items_per_page: false
+            items_per_page_label: 'Items per page'
+            items_per_page_options: '5, 10, 25, 50'
+            items_per_page_options_all: false
+            items_per_page_options_all_label: '- All -'
+            offset: false
+            offset_label: Offset
+          views_infinite_scroll:
+            button_text: 'Load More'
+            automatically_load_content: false
+      style:
+        type: gvagrid
+        options:
+          row_class: ''
+          default_row_class: true
+          uses_fields: false
+          items_lg: '2'
+          items_md: '2'
+          items_sm: '2'
+          items_xs: '2'
+          el_class: ''
+          el_id: ''
+      row:
+        type: 'entity:node'
+        options:
+          relationship: none
+          view_mode: teaser_2
+    cache_metadata:
+      max-age: -1
+      contexts:
+        - 'languages:language_content'
+        - 'languages:language_interface'
+        - url
+        - url.query_args
+        - 'url.query_args:sort_by'
+        - 'url.query_args:sort_order'
+        - user
+        - 'user.node_grants:view'
+        - user.permissions
+      tags: {  }
+  listing_map_block:
+    display_plugin: block
+    id: listing_map_block
+    display_title: 'Listings Map Block I'
+    position: 2
+    display_options:
+      display_extenders: {  }
+      display_description: ''
+      filters:
+        status:
+          value: '1'
+          table: node_field_data
+          field: status
+          plugin_id: boolean
+          entity_type: node
+          entity_field: status
+          id: status
+          expose:
+            operator: ''
+          group: 1
+        type:
+          id: type
+          table: node_field_data
+          field: type
+          value:
+            listing: listing
+          entity_type: node
+          entity_field: type
+          plugin_id: bundle
+          group: 1
+      defaults:
+        filters: false
+        filter_groups: false
+        use_ajax: false
+        css_class: false
+        exposed_form: false
+        sorts: false
+        empty: false
+        pager: false
+        header: false
+      filter_groups:
+        operator: AND
+        groups:
+          1: AND
+      exposed_block: false
+      use_ajax: true
+      css_class: ''
+      exposed_form:
+        type: basic
+        options:
+          submit_button: Apply
+          reset_button: true
+          reset_button_label: Reset
+          exposed_sorts_label: 'Sort by'
+          expose_sort_order: true
+          sort_asc_label: Asc
+          sort_desc_label: Desc
+      sorts:
+        created:
+          id: created
+          table: node_field_data
+          field: created
+          relationship: none
+          group_type: group
+          admin_label: ''
+          order: DESC
+          exposed: false
+          expose:
+            label: 'Date Published'
+          granularity: second
+          entity_type: node
+          entity_field: created
+          plugin_id: date
+      empty: {  }
+      pager:
+        type: some
+        options:
+          items_per_page: 20
+          offset: 0
+      header: {  }
+    cache_metadata:
+      max-age: -1
+      contexts:
+        - 'languages:language_content'
+        - 'languages:language_interface'
+        - 'user.node_grants:view'
+        - user.permissions
+      tags: {  }
+  listing_map_one:
+    display_plugin: page
+    id: listing_map_one
+    display_title: 'Listing Map Page I'
+    position: 6
+    display_options:
+      display_extenders: {  }
+      display_description: ''
+      path: listings
+      filters:
+        status:
+          value: '1'
+          table: node_field_data
+          field: status
+          plugin_id: boolean
+          entity_type: node
+          entity_field: status
+          id: status
+          expose:
+            operator: ''
+          group: 1
+        type:
+          id: type
+          table: node_field_data
+          field: type
+          value:
+            listing: listing
+          entity_type: node
+          entity_field: type
+          plugin_id: bundle
+          group: 1
+        title:
+          id: title
+          table: node_field_data
+          field: title
+          relationship: none
+          group_type: group
+          admin_label: ''
+          operator: word
+          value: ''
+          group: 1
+          exposed: true
+          expose:
+            operator_id: title_op
+            label: Title
+            description: ''
+            use_operator: false
+            operator: title_op
+            identifier: title
+            required: false
+            remember: false
+            multiple: false
+            remember_roles:
+              authenticated: authenticated
+              anonymous: '0'
+              administrator: '0'
+            placeholder: ''
+          is_grouped: false
+          group_info:
+            label: ''
+            description: ''
+            identifier: ''
+            optional: true
+            widget: select
+            multiple: false
+            remember: false
+            default_group: All
+            default_group_multiple: {  }
+            group_items: {  }
+          entity_type: node
+          entity_field: title
+          plugin_id: string
+        field_listing_category_target_id:
+          id: field_listing_category_target_id
+          table: node__field_listing_category
+          field: field_listing_category_target_id
+          relationship: none
+          group_type: group
+          admin_label: ''
+          operator: or
+          value: {  }
+          group: 1
+          exposed: true
+          expose:
+            operator_id: field_listing_category_target_id_op
+            label: 'All Categories'
+            description: ''
+            use_operator: false
+            operator: field_listing_category_target_id_op
+            identifier: field_listing_category_target_id
+            required: false
+            remember: false
+            multiple: false
+            remember_roles:
+              authenticated: authenticated
+              anonymous: '0'
+              administrator: '0'
+            reduce: false
+          is_grouped: false
+          group_info:
+            label: ''
+            description: ''
+            identifier: ''
+            optional: true
+            widget: select
+            multiple: false
+            remember: false
+            default_group: All
+            default_group_multiple: {  }
+            group_items: {  }
+          reduce_duplicates: false
+          type: select
+          limit: true
+          vid: listing_category
+          hierarchy: false
+          error_message: true
+          plugin_id: taxonomy_index_tid
+        field_listing_location_target_id:
+          id: field_listing_location_target_id
+          table: node__field_listing_location
+          field: field_listing_location_target_id
+          relationship: none
+          group_type: group
+          admin_label: ''
+          operator: or
+          value: {  }
+          group: 1
+          exposed: true
+          expose:
+            operator_id: field_listing_location_target_id_op
+            label: 'All Locations'
+            description: ''
+            use_operator: false
+            operator: field_listing_location_target_id_op
+            identifier: field_listing_location_target_id
+            required: false
+            remember: false
+            multiple: false
+            remember_roles:
+              authenticated: authenticated
+              anonymous: '0'
+              administrator: '0'
+            reduce: false
+          is_grouped: false
+          group_info:
+            label: ''
+            description: ''
+            identifier: ''
+            optional: true
+            widget: select
+            multiple: false
+            remember: false
+            default_group: All
+            default_group_multiple: {  }
+            group_items: {  }
+          reduce_duplicates: false
+          type: select
+          limit: true
+          vid: listing_locations
+          hierarchy: true
+          error_message: true
+          plugin_id: taxonomy_index_tid
+        field_listing_amenities_target_id:
+          id: field_listing_amenities_target_id
+          table: node__field_listing_amenities
+          field: field_listing_amenities_target_id
+          relationship: none
+          group_type: group
+          admin_label: ''
+          operator: or
+          value: {  }
+          group: 1
+          exposed: true
+          expose:
+            operator_id: field_listing_amenities_target_id_op
+            label: 'Listing Amenities'
+            description: ''
+            use_operator: false
+            operator: field_listing_amenities_target_id_op
+            identifier: field_listing_amenities_target_id
+            required: false
+            remember: false
+            multiple: true
+            remember_roles:
+              authenticated: authenticated
+              anonymous: '0'
+              administrator: '0'
+            reduce: false
+          is_grouped: false
+          group_info:
+            label: ''
+            description: ''
+            identifier: ''
+            optional: true
+            widget: select
+            multiple: false
+            remember: false
+            default_group: All
+            default_group_multiple: {  }
+            group_items: {  }
+          reduce_duplicates: false
+          type: select
+          limit: true
+          vid: amenities
+          hierarchy: false
+          error_message: false
+          plugin_id: taxonomy_index_tid
+      defaults:
+        filters: false
+        filter_groups: false
+        use_ajax: false
+        css_class: false
+        exposed_form: false
+        sorts: false
+        empty: false
+        pager: false
+      filter_groups:
+        operator: AND
+        groups:
+          1: AND
+      exposed_block: false
+      use_ajax: true
+      css_class: mode-filter-fixed
+      exposed_form:
+        type: bef
+        options:
+          submit_button: Apply
+          reset_button: true
+          reset_button_label: Reset
+          exposed_sorts_label: 'Sort by'
+          expose_sort_order: true
+          sort_asc_label: Asc
+          sort_desc_label: Desc
+          input_required: false
+          text_input_required: 'Select any filter and click on Apply to see results'
+          bef:
+            general:
+              allow_secondary: false
+              secondary_label: 'Advanced options'
+              autosubmit: false
+              autosubmit_exclude_textfield: false
+              autosubmit_hide: false
+            sort:
+              bef_format: default
+              advanced:
+                collapsible: false
+                collapsible_label: 'Sort options'
+                combine: false
+                combine_rewrite: ''
+                reset: false
+                reset_label: ''
+                is_secondary: false
+            title:
+              bef_format: default
+              more_options:
+                is_secondary: false
+                placeholder_text: ''
+            field_listing_category_target_id:
+              bef_format: default
+              more_options:
+                bef_select_all_none: false
+                bef_collapsible: false
+                is_secondary: false
+                rewrite:
+                  filter_rewrite_values: ''
+            field_listing_location_target_id:
+              bef_format: default
+              more_options:
+                is_secondary: false
+                placeholder_text: ''
+                rewrite:
+                  filter_rewrite_values: ''
+            field_listing_amenities_target_id:
+              bef_format: bef
+              more_options:
+                bef_select_all_none: false
+                bef_collapsible: false
+                is_secondary: false
+                rewrite:
+                  filter_rewrite_values: ''
+          text_input_required_format: full_html
+      sorts:
+        created:
+          id: created
+          table: node_field_data
+          field: created
+          relationship: none
+          group_type: group
+          admin_label: ''
+          order: DESC
+          exposed: true
+          expose:
+            label: 'Date Published'
+          granularity: second
+          entity_type: node
+          entity_field: created
+          plugin_id: date
+        changed:
+          id: changed
+          table: node_field_data
+          field: changed
+          relationship: none
+          group_type: group
+          admin_label: ''
+          order: DESC
+          exposed: true
+          expose:
+            label: 'Date Updated'
+          granularity: second
+          entity_type: node
+          entity_field: changed
+          plugin_id: date
+        title:
+          id: title
+          table: node_field_data
+          field: title
+          relationship: none
+          group_type: group
+          admin_label: ''
+          order: DESC
+          exposed: true
+          expose:
+            label: Title
+          entity_type: node
+          entity_field: title
+          plugin_id: standard
+        field_listing_category_target_id:
+          id: field_listing_category_target_id
+          table: node__field_listing_category
+          field: field_listing_category_target_id
+          relationship: none
+          group_type: group
+          admin_label: ''
+          order: ASC
+          exposed: true
+          expose:
+            label: Category
+          plugin_id: standard
+      empty:
+        area:
+          id: area
+          table: views
+          field: area
+          relationship: none
+          group_type: group
+          admin_label: ''
+          empty: true
+          tokenize: false
+          content:
+            value: "  <div class=\"half-map-layout-1 clearfix\">\r\n       <div class=\"main-listing-wrapper\">\r\n          <div class=\"map-action clearfix\"><div class=\"control-search\"><a href=\"#\">Search Filters</a></div></div>  \r\n          <div class=\"listing-items gva-view-grid-inner\"><div class=\"alert alert-warning\">No found results</div></div>\r\n      </div>  \r\n      <div class=\"main-map-wrapper\">\r\n          <div id=\"listing-main-map\" class=\"listing-main-map\"></div>\r\n       </div>\r\n  </div>  \r\n<script type=\"text/javascript\">map_init();</script>"
+            format: html_without_editor
+          plugin_id: text
+      pager:
+        type: infinite_scroll
+        options:
+          items_per_page: 6
+          offset: 0
+          id: 0
+          total_pages: null
+          tags:
+            previous: '‹ Previous'
+            next: 'Next ›'
+          expose:
+            items_per_page: false
+            items_per_page_label: 'Items per page'
+            items_per_page_options: '5, 10, 25, 50'
+            items_per_page_options_all: false
+            items_per_page_options_all_label: '- All -'
+            offset: false
+            offset_label: Offset
+          views_infinite_scroll:
+            button_text: 'Load More'
+            automatically_load_content: false
+    cache_metadata:
+      max-age: -1
+      contexts:
+        - 'languages:language_content'
+        - 'languages:language_interface'
+        - url
+        - url.query_args
+        - 'url.query_args:sort_by'
+        - 'url.query_args:sort_order'
+        - user
+        - 'user.node_grants:view'
+        - user.permissions
+      tags: {  }
+  listing_map_two:
+    display_plugin: page
+    id: listing_map_two
+    display_title: 'Listing Map Page II'
+    position: 7
+    display_options:
+      display_extenders: {  }
+      display_description: ''
+      path: listings-2
+      filters:
+        status:
+          value: '1'
+          table: node_field_data
+          field: status
+          plugin_id: boolean
+          entity_type: node
+          entity_field: status
+          id: status
+          expose:
+            operator: ''
+          group: 1
+        type:
+          id: type
+          table: node_field_data
+          field: type
+          value:
+            listing: listing
+          entity_type: node
+          entity_field: type
+          plugin_id: bundle
+          group: 1
+        title:
+          id: title
+          table: node_field_data
+          field: title
+          relationship: none
+          group_type: group
+          admin_label: ''
+          operator: word
+          value: ''
+          group: 1
+          exposed: true
+          expose:
+            operator_id: title_op
+            label: Title
+            description: ''
+            use_operator: false
+            operator: title_op
+            identifier: title
+            required: false
+            remember: false
+            multiple: false
+            remember_roles:
+              authenticated: authenticated
+              anonymous: '0'
+              administrator: '0'
+            placeholder: ''
+          is_grouped: false
+          group_info:
+            label: ''
+            description: ''
+            identifier: ''
+            optional: true
+            widget: select
+            multiple: false
+            remember: false
+            default_group: All
+            default_group_multiple: {  }
+            group_items: {  }
+          entity_type: node
+          entity_field: title
+          plugin_id: string
+        field_listing_category_target_id:
+          id: field_listing_category_target_id
+          table: node__field_listing_category
+          field: field_listing_category_target_id
+          relationship: none
+          group_type: group
+          admin_label: ''
+          operator: or
+          value: {  }
+          group: 1
+          exposed: true
+          expose:
+            operator_id: field_listing_category_target_id_op
+            label: 'All Categories'
+            description: ''
+            use_operator: false
+            operator: field_listing_category_target_id_op
+            identifier: field_listing_category_target_id
+            required: false
+            remember: false
+            multiple: false
+            remember_roles:
+              authenticated: authenticated
+              anonymous: '0'
+              administrator: '0'
+            reduce: false
+          is_grouped: false
+          group_info:
+            label: ''
+            description: ''
+            identifier: ''
+            optional: true
+            widget: select
+            multiple: false
+            remember: false
+            default_group: All
+            default_group_multiple: {  }
+            group_items: {  }
+          reduce_duplicates: false
+          type: select
+          limit: true
+          vid: listing_category
+          hierarchy: false
+          error_message: true
+          plugin_id: taxonomy_index_tid
+        field_listing_location_target_id:
+          id: field_listing_location_target_id
+          table: node__field_listing_location
+          field: field_listing_location_target_id
+          relationship: none
+          group_type: group
+          admin_label: ''
+          operator: or
+          value: {  }
+          group: 1
+          exposed: true
+          expose:
+            operator_id: field_listing_location_target_id_op
+            label: 'All Locations'
+            description: ''
+            use_operator: false
+            operator: field_listing_location_target_id_op
+            identifier: field_listing_location_target_id
+            required: false
+            remember: false
+            multiple: false
+            remember_roles:
+              authenticated: authenticated
+              anonymous: '0'
+              administrator: '0'
+            reduce: false
+          is_grouped: false
+          group_info:
+            label: ''
+            description: ''
+            identifier: ''
+            optional: true
+            widget: select
+            multiple: false
+            remember: false
+            default_group: All
+            default_group_multiple: {  }
+            group_items: {  }
+          reduce_duplicates: false
+          type: select
+          limit: true
+          vid: listing_locations
+          hierarchy: true
+          error_message: true
+          plugin_id: taxonomy_index_tid
+        field_listing_amenities_target_id:
+          id: field_listing_amenities_target_id
+          table: node__field_listing_amenities
+          field: field_listing_amenities_target_id
+          relationship: none
+          group_type: group
+          admin_label: ''
+          operator: or
+          value: {  }
+          group: 1
+          exposed: true
+          expose:
+            operator_id: field_listing_amenities_target_id_op
+            label: 'Listing Amenities'
+            description: ''
+            use_operator: false
+            operator: field_listing_amenities_target_id_op
+            identifier: field_listing_amenities_target_id
+            required: false
+            remember: false
+            multiple: true
+            remember_roles:
+              authenticated: authenticated
+              anonymous: '0'
+              administrator: '0'
+            reduce: false
+          is_grouped: false
+          group_info:
+            label: ''
+            description: ''
+            identifier: ''
+            optional: true
+            widget: select
+            multiple: false
+            remember: false
+            default_group: All
+            default_group_multiple: {  }
+            group_items: {  }
+          reduce_duplicates: false
+          type: select
+          limit: true
+          vid: amenities
+          hierarchy: false
+          error_message: false
+          plugin_id: taxonomy_index_tid
+      defaults:
+        filters: false
+        filter_groups: false
+        use_ajax: false
+        css_class: false
+        exposed_form: false
+        sorts: false
+        empty: false
+        pager: false
+        style: false
+        row: false
+      filter_groups:
+        operator: AND
+        groups:
+          1: AND
+      exposed_block: false
+      use_ajax: true
+      css_class: mode-filter-fixed
+      exposed_form:
+        type: bef
+        options:
+          submit_button: Apply
+          reset_button: true
+          reset_button_label: Reset
+          exposed_sorts_label: 'Sort by'
+          expose_sort_order: true
+          sort_asc_label: Asc
+          sort_desc_label: Desc
+          input_required: false
+          text_input_required: 'Select any filter and click on Apply to see results'
+          bef:
+            general:
+              allow_secondary: false
+              secondary_label: 'Advanced options'
+              autosubmit: false
+              autosubmit_exclude_textfield: false
+              autosubmit_hide: false
+            sort:
+              bef_format: default
+              advanced:
+                collapsible: false
+                collapsible_label: 'Sort options'
+                combine: false
+                combine_rewrite: ''
+                reset: false
+                reset_label: ''
+                is_secondary: false
+            title:
+              bef_format: default
+              more_options:
+                is_secondary: false
+                placeholder_text: ''
+            field_listing_category_target_id:
+              bef_format: default
+              more_options:
+                bef_select_all_none: false
+                bef_collapsible: false
+                is_secondary: false
+                rewrite:
+                  filter_rewrite_values: ''
+            field_listing_location_target_id:
+              bef_format: default
+              more_options:
+                is_secondary: false
+                placeholder_text: ''
+                rewrite:
+                  filter_rewrite_values: ''
+            field_listing_amenities_target_id:
+              bef_format: bef
+              more_options:
+                bef_select_all_none: false
+                bef_collapsible: false
+                is_secondary: false
+                rewrite:
+                  filter_rewrite_values: ''
+          text_input_required_format: full_html
+      sorts:
+        created:
+          id: created
+          table: node_field_data
+          field: created
+          relationship: none
+          group_type: group
+          admin_label: ''
+          order: DESC
+          exposed: true
+          expose:
+            label: 'Date Published'
+          granularity: second
+          entity_type: node
+          entity_field: created
+          plugin_id: date
+        changed:
+          id: changed
+          table: node_field_data
+          field: changed
+          relationship: none
+          group_type: group
+          admin_label: ''
+          order: DESC
+          exposed: true
+          expose:
+            label: 'Date Updated'
+          granularity: second
+          entity_type: node
+          entity_field: changed
+          plugin_id: date
+        title:
+          id: title
+          table: node_field_data
+          field: title
+          relationship: none
+          group_type: group
+          admin_label: ''
+          order: DESC
+          exposed: true
+          expose:
+            label: Title
+          entity_type: node
+          entity_field: title
+          plugin_id: standard
+        field_listing_category_target_id:
+          id: field_listing_category_target_id
+          table: node__field_listing_category
+          field: field_listing_category_target_id
+          relationship: none
+          group_type: group
+          admin_label: ''
+          order: ASC
+          exposed: true
+          expose:
+            label: Category
+          plugin_id: standard
+      empty:
+        area:
+          id: area
+          table: views
+          field: area
+          relationship: none
+          group_type: group
+          admin_label: ''
+          empty: true
+          tokenize: false
+          content:
+            value: "  <div class=\"half-map-layout-1 clearfix\">\r\n       <div class=\"main-listing-wrapper\">\r\n          <div class=\"map-action clearfix\"><div class=\"control-search\"><a href=\"#\">Search Filters</a></div></div>  \r\n          <div class=\"listing-items gva-view-grid-inner\"><div class=\"alert alert-warning\">No found results</div></div>\r\n      </div>  \r\n      <div class=\"main-map-wrapper\">\r\n          <div id=\"listing-main-map\" class=\"listing-main-map\"></div>\r\n       </div>\r\n  </div>  \r\n<script type=\"text/javascript\">map_init();</script>"
+            format: html_without_editor
+          plugin_id: text
+      pager:
+        type: infinite_scroll
+        options:
+          items_per_page: 9
+          offset: 0
+          id: 0
+          total_pages: null
+          tags:
+            previous: '‹ Previous'
+            next: 'Next ›'
+          expose:
+            items_per_page: false
+            items_per_page_label: 'Items per page'
+            items_per_page_options: '5, 10, 25, 50'
+            items_per_page_options_all: false
+            items_per_page_options_all_label: '- All -'
+            offset: false
+            offset_label: Offset
+          views_infinite_scroll:
+            button_text: 'Load More'
+            automatically_load_content: false
+      style:
+        type: gvagrid
+        options:
+          row_class: ''
+          default_row_class: true
+          uses_fields: false
+          items_lg: '3'
+          items_md: '2'
+          items_sm: '2'
+          items_xs: '2'
+          el_class: ''
+          el_id: ''
+      row:
+        type: 'entity:node'
+        options:
+          relationship: none
+          view_mode: teaser
+    cache_metadata:
+      max-age: -1
+      contexts:
+        - 'languages:language_content'
+        - 'languages:language_interface'
+        - url
+        - url.query_args
+        - 'url.query_args:sort_by'
+        - 'url.query_args:sort_order'
+        - user
+        - 'user.node_grants:view'
+        - user.permissions
+      tags: {  }

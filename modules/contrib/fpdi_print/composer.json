@@ -1,0 +1,26 @@
+{
+  "name": "drupal/fpdi_print",
+  "description": "This module provides both a field formatter and a widget for the Paragraphs entity type",
+  "type": "drupal-module",
+  "minimum-stability": "stable",
+  "homepage": "https://www.drupal.org/project/fpdi_print",
+  "support": {
+    "issues": "https://www.drupal.org/project/issues/fpdi_print",
+    "source": "https://git.drupalcode.org/project/fpdi_print"
+  },
+  "license": "GPL-2.0-or-later",
+  "authors": [
+    {
+      "name": "NGUYEN Bao",
+      "email": "n.bao@yahoo.com",
+      "homepage": "https://www.drupal.org/u/lazzyvn",
+      "role": "Maintainer"
+    }
+  ],
+  "require": {
+    "drupal/core": "^9.3 || ^10",
+    "tecnickcom/tcpdf": "6.6.*",
+    "setasign/fpdi": "^2.3",
+    "tmw/fpdm": "^2.9"
+  }
+}

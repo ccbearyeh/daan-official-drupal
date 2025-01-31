@@ -1,0 +1,8 @@
+langcode: en
+status: true
+dependencies: {  }
+name: 'Listing Locations'
+vid: listing_locations
+description: ''
+hierarchy: 1
+weight: 0

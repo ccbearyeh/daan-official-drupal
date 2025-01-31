@@ -1,0 +1,13 @@
+name: 'Features'
+type: module
+description: 'Enables administrators to package configuration into modules.'
+package: Development
+core_version_requirement: '^9.4 || ^10'
+dependencies:
+  - drupal:config
+  - config_update:config_update
+
+# Information added by Drupal.org packaging script on 2022-12-15
+version: '5.0.x-dev'
+project: 'features'
+datestamp: 1671144647

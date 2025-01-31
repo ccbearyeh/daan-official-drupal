@@ -1,0 +1,12 @@
+name: feature
+type: module
+core_version_requirement: '^9.4 || ^10'
+package: Test
+# Force this to install after features.
+dependencies:
+  - features:features
+
+# Information added by Drupal.org packaging script on 2022-12-15
+version: '5.0.x-dev'
+project: 'features'
+datestamp: 1671144647

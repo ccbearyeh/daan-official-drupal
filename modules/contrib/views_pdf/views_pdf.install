@@ -1,0 +1,31 @@
+<?php
+declare(strict_types=1);
+
+use Drupal\views_pdf\Share\LibraryAutodiscovery;
+
+/**
+ * Implements hook_requirements().
+ */
+function views_pdf_requirements($phase) : array {
+  $requirements = array();
+
+  if ('runtime' === $phase) {
+    foreach (LibraryAutodiscovery::find() as $library => $info) {
+      if ($info['version_control'] < LibraryAutodiscovery::SUPPORTED_LIBRARIES[$library]['version']) {
+        $requirements["views_pdf_$library"] = [
+          'title' => t('Views PDF: ' . $library .  ' library'),
+          'severity' => REQUIREMENT_WARNING,
+          'value' => t("Version not supported, use a newer version."),
+        ];
+      } else {
+        $requirements["views_pdf_$library"] = [
+          'title' => t('Views PDF: ' . $library .  ' library'),
+          'severity' => REQUIREMENT_OK,
+          'value' => t("Library $library supported, version: :version", [':version' => $info['version']]),
+        ];
+      }
+    }
+  }
+
+  return $requirements;
+}

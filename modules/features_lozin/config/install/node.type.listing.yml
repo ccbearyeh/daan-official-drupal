@@ -1,0 +1,17 @@
+langcode: en
+status: true
+dependencies:
+  module:
+    - menu_ui
+third_party_settings:
+  menu_ui:
+    available_menus:
+      - main
+    parent: 'main:'
+name: Listing
+type: listing
+description: 'Custom content type for adding listings into directory. This type has defined listing''s custom fields and taxonomies.'
+help: ''
+new_revision: false
+preview_mode: 1
+display_submitted: true

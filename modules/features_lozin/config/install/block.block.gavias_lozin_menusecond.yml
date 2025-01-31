@@ -1,0 +1,32 @@
+langcode: en
+status: true
+dependencies:
+  config:
+    - system.menu.menu-second
+  module:
+    - gaviasthemer
+    - system
+  theme:
+    - gavias_lozin
+third_party_settings:
+  gaviasthemer:
+    classes: ''
+id: gavias_lozin_menusecond
+theme: gavias_lozin
+region: sidebar_right
+weight: -8
+provider: null
+plugin: 'system_menu_block:menu-second'
+settings:
+  id: 'system_menu_block:menu-second'
+  label: Company
+  provider: system
+  label_display: visible
+  level: 1
+  depth: 0
+visibility:
+  request_path:
+    id: request_path
+    pages: "/team-grid\r\n/team-list\r\n/node/69\r\n/node/71\r\n/node/73\r\n/node/74\r\n/node/75\r\n/team-grid\r\n/team-list"
+    negate: false
+    context_mapping: {  }

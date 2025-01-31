@@ -1,0 +1,7 @@
+langcode: en
+status: true
+dependencies: {  }
+name: 'HTML Without Editor'
+format: html_without_editor
+weight: 0
+filters: {  }

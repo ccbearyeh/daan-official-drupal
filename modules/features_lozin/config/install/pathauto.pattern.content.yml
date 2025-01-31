@@ -1,0 +1,27 @@
+langcode: en
+status: true
+dependencies:
+  module:
+    - node
+id: content
+label: Content
+type: 'canonical_entities:node'
+pattern: '[node:title]'
+selection_criteria:
+  e34fccb0-f935-441c-8894-a567a99859e8:
+    id: 'entity_bundle:node'
+    bundles:
+      article: article
+      banner: banner
+      page: page
+      page_full: page_full
+      portfolio: portfolio
+      team: team
+      testimonial: testimonial
+    negate: false
+    context_mapping:
+      node: node
+    uuid: e34fccb0-f935-441c-8894-a567a99859e8
+selection_logic: and
+weight: -5
+relationships: {  }

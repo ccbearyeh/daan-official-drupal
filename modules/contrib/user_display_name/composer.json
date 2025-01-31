@@ -1,0 +1,17 @@
+{
+  "name": "drupal/user_display_name",
+  "description": "Adds a display name field to user entities.",
+  "type": "drupal-module",
+  "homepage": "https://www.drupal.org/project/user_display_name",
+  "authors": [
+    {
+      "name": "orakili",
+      "homepage": "https://www.drupal.org/u/orakili"
+    }
+  ],
+  "support": {
+    "issues": "https://www.drupal.org/project/issues/user_display_name",
+    "source": "https://git.drupal.org/project/user_display_name.git"
+  },
+  "license": "GPL-2.0+"
+}

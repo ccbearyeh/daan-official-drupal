@@ -1,0 +1,61 @@
+<?php
+declare(strict_types=1);
+
+use Drupal\Core\Routing\RouteMatchInterface;
+
+/**
+ * Implements hook_help().
+ */
+function views_pdf_help($route_name, RouteMatchInterface $route_match) {
+  switch ($route_name) {
+    case 'help.page.views_pdf':
+      $output = '';
+      $output .= '<h2>' . t('About') . '</h2>';
+      $output .= '<p>' .t('With this module you can output a view as a PDF document. Each field of the view can be placed on the PDF page directly in the administration interface. Therefore a new display called "PDF" is added') . '</p>';
+      $output .= '<p>' .t('There are already some PDF solutions such as Print. But these solutions use the HTML output and converts this to PDF. The downsides of such an integration are:') . '</p>';
+      $output .= '<ul>'.'<li>'.t('No control over page flow (e.g. page break).').'</li>';
+      $output .= '<li>'.t('Little or no control over page header and footer.').'</li>';
+      $output .= '<li>'.t('You need HTML skills to change the layout.').'</li>';
+      $output .= '<li>'.t('The rendering is slow and need a lot of memory, because it needs to render the HTML.').'</li>';
+      $output .= '<li>'.t('Complex tables make troubles.').'</li>';
+      $output .= '<li>'.t('Vector graphics can not be implemented, therefore the printing of the document can be problematic.').'</li>';
+      $output .= '<li>'.t('You are limited by HTML capabilities.').'</li>'.'</ul>';
+      $output .= '<p>'.t('You can also specify a background PDF document. This enables you to put unlimited static content to the dynamic PDF. 
+                          This static PDF can be exchanged dynamically by using a File Field. 
+                          The PDF can be created by any PDF creator such as Adobe Acrobat Professional or Open Office.').'</p>';
+      return $output;
+  }
+}
+
+/**
+ * @implements hook_theme();
+ */
+function views_pdf_theme($existing, $type, $theme, $path) : array {
+  \Drupal::moduleHandler()->loadInclude('views_pdf', 'inc', 'views_pdf.theme');
+  $module_dir = \Drupal::service('extension.list.module')->getPath('views_pdf');
+
+  return [
+    'views_view_pdf_unformatted' => [
+      'path' => $path,
+      'includes' => [ $module_dir . '/views_pdf.theme.inc' ],
+    ]
+  ];
+}
+
+/**
+ * Implements hook_form_BASE_FORM_ID_form().
+ *
+ * @param $form
+ * @param \Drupal\Core\Form\FormStateInterface $form_state
+ * @param $form_id
+ */
+function views_pdf_form_view_preview_form_alter(&$form, \Drupal\Core\Form\FormStateInterface $form_state, $form_id) {
+
+  /** @var \Drupal\views_ui\ViewUI $viewUI */
+  $viewUI = $form_state->getStorage()['view'];
+  $view = $viewUI->getExecutable();
+
+  if ('pdf' === $view->display_handler->getType()) {
+    $form['controls']['live_preview']['#default_value'] = FALSE;
+  }
+}

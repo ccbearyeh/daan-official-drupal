@@ -1,0 +1,33 @@
+<?php
+
+/**
+ * @file
+ * Entity Print Views module file.
+ */
+
+use Drupal\fpdi_print\Renderer\ViewRenderer;
+
+/**
+ * Implements hook_views_data_alter().
+ */
+function fpdi_print_views_data_alter(array &$data) {
+  foreach (\Drupal::entityTypeManager()->getDefinitions() as $entity_type_id => $entity_type) {
+    if (isset($data[$entity_type_id])) {
+      $data[$entity_type_id]['fpdi_print_' . $entity_type_id] = [
+        'field' => [
+          'title' => t('Print link'),
+          'help' => t('Provide a link to print the entity'),
+          'id' => 'fpdi_print_views_link',
+        ],
+      ];
+    }
+  }
+}
+
+/**
+ * Implements hook_entity_type_alter().
+ */
+function fpdi_print_entity_type_alter(array &$entity_types) {
+  $entity_types['view']->setHandlerClass('fpdi_print', ViewRenderer::class);
+}
+

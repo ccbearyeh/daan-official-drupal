@@ -1,0 +1,28 @@
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.storage.node.field_listing_category
+    - node.type.listing
+    - taxonomy.vocabulary.listing_category
+id: node.listing.field_listing_category
+field_name: field_listing_category
+entity_type: node
+bundle: listing
+label: 'Listing Category'
+description: ''
+required: true
+translatable: false
+default_value: {  }
+default_value_callback: ''
+settings:
+  handler: 'default:taxonomy_term'
+  handler_settings:
+    target_bundles:
+      listing_category: listing_category
+    sort:
+      field: name
+      direction: asc
+    auto_create: false
+    auto_create_bundle: ''
+field_type: entity_reference

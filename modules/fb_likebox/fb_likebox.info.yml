@@ -1,0 +1,12 @@
+name : Facebook Likebox
+type: module
+description : Simple module that provides a configurable block with Facebook Likebox's plugin.
+package : FB Likebox
+core_version_requirement: ^9.5 || ^10
+dependencies:
+  - drupal:block
+
+# Information added by Drupal.org packaging script on 2023-06-30
+version: '8.x-2.3'
+project: 'fb_likebox'
+datestamp: 1688125627

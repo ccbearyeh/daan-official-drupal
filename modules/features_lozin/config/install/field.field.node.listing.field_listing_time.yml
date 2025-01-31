@@ -1,0 +1,20 @@
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.storage.node.field_listing_time
+    - node.type.listing
+  module:
+    - text
+id: node.listing.field_listing_time
+field_name: field_listing_time
+entity_type: node
+bundle: listing
+label: 'Listing Time'
+description: ''
+required: false
+translatable: false
+default_value: {  }
+default_value_callback: ''
+settings: {  }
+field_type: text_long

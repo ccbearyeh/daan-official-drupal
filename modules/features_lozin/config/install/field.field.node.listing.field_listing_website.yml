@@ -1,0 +1,18 @@
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.storage.node.field_listing_website
+    - node.type.listing
+id: node.listing.field_listing_website
+field_name: field_listing_website
+entity_type: node
+bundle: listing
+label: 'Contact Website'
+description: ''
+required: false
+translatable: false
+default_value: {  }
+default_value_callback: ''
+settings: {  }
+field_type: string

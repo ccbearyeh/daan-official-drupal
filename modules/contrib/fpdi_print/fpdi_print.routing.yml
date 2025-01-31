@@ -1,0 +1,15 @@
+fpdi_print.settings:
+  path: 'admin/config/content/fpdi-print'
+  defaults:
+    _form: '\Drupal\fpdi_print\Form\SettingsForm'
+    _title: 'FPDI Print Setting'
+  requirements:
+    _permission: 'administer fpdi print'
+
+fpdi_print.view:
+  path: 'pdf/view/{view_name}/{display_id}/{option_id}'
+  defaults:
+    _controller: '\Drupal\fpdi_print\Controller\ViewPrintController::viewPrint'
+    _title: 'PDF download'
+  requirements:
+    _custom_access: '\Drupal\fpdi_print\Controller\ViewPrintController::checkAccess'

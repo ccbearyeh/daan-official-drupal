@@ -1,0 +1,5 @@
+fpdi_print.settings:
+  title: FPDI Print
+  description: 'Configure the FPDI PDF generation.'
+  route_name: fpdi_print.settings
+  parent: system.admin_config_content

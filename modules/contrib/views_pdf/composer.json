@@ -1,0 +1,26 @@
+{
+    "name": "drupal/views_pdf",
+    "description": "Views plugin to export a views as a PDF file.",
+    "type": "drupal-module",
+    "homepage": "https://www.drupal.org/project/views_pdf",
+    "license": "GPL-2.0-or-later",
+    "keywords": ["php", "views_pdf", "drupal", "pdf", "views"],
+    "minimum-stability": "dev",
+    "prefer-stable": true,
+    "authors": [{
+        "name": "Luigi Guevara (@killua99@social.linux.pizza)",
+        "homepage": "https://www.drupal.org/u/killua99",
+        "role": "Maintainer"
+    }],
+    "support": {
+        "issues": "https://www.drupal.org/project/issues/views_pdf",
+        "documentation": "https://www.drupal.org/docs/7/modules/views-pdf",
+        "source": "https://cgit.drupalcode.org/views_pdf",
+        "slack": "https://app.slack.com/client/T06GX3JTS/C042ULM53KJ"
+    },
+    "require": {
+        "php": "^8.0",
+        "setasign/fpdi": "^2.3",
+        "tecnickcom/tcpdf": "^6.4"
+    }
+}

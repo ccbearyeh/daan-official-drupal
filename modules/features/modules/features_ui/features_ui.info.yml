@@ -1,0 +1,13 @@
+name: Features UI
+type: module
+description: 'Provides the user interface for Features.'
+package: Development
+core_version_requirement: '^9.4 || ^10'
+configure: features.assignment
+dependencies:
+  - features:features
+
+# Information added by Drupal.org packaging script on 2022-12-15
+version: '5.0.x-dev'
+project: 'features'
+datestamp: 1671144647

@@ -1,0 +1,28 @@
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.storage.node.field_listing_amenities
+    - node.type.listing
+    - taxonomy.vocabulary.amenities
+id: node.listing.field_listing_amenities
+field_name: field_listing_amenities
+entity_type: node
+bundle: listing
+label: 'Listing Amenities'
+description: ''
+required: false
+translatable: false
+default_value: {  }
+default_value_callback: ''
+settings:
+  handler: 'default:taxonomy_term'
+  handler_settings:
+    target_bundles:
+      amenities: amenities
+    sort:
+      field: name
+      direction: asc
+    auto_create: false
+    auto_create_bundle: ''
+field_type: entity_reference

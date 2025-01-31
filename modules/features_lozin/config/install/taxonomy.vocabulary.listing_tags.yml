@@ -1,0 +1,8 @@
+langcode: en
+status: true
+dependencies: {  }
+name: 'Listing Tags'
+vid: listing_tags
+description: ''
+hierarchy: 0
+weight: 0

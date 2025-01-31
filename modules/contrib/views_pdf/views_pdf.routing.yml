@@ -1,0 +1,39 @@
+entity.views_pdf_template.collection:
+  path: '/admin/structure/views-pdf-template'
+  defaults:
+    _entity_list: 'views_pdf_template'
+    _title: 'Views PDF Templates'
+  requirements:
+    _permission: 'administer views_pdf_template'
+
+entity.views_pdf_template.add_form:
+  path: '/admin/structure/views_pdf_template/add'
+  defaults:
+    _entity_form: 'views_pdf_template.add'
+    _title: 'Add a Views PDF template'
+  requirements:
+    _permission: 'administer views_pdf_template'
+
+entity.views_pdf_template.edit_form:
+  path: '/admin/structure/views-pdf-template/{views_pdf_template}'
+  defaults:
+    _entity_form: 'views_pdf_template.edit'
+    _title: 'Edit a Views PDF template'
+  requirements:
+    _permission: 'administer views_pdf_template'
+
+entity.views_pdf_template.delete_form:
+  path: '/admin/structure/views-pdf-template/{views_pdf_template}/delete'
+  defaults:
+    _entity_form: 'views_pdf_template.delete'
+    _title: 'Delete a Views PDF template'
+  requirements:
+    _permission: 'administer views_pdf_template'
+
+views_pdf.views_pdf_settings:
+  path: '/admin/config/content/views-pdf'
+  defaults:
+    _form: '\Drupal\views_pdf\Form\SettingsForm'
+    _title: 'Views PDF settings'
+  requirements:
+    _permission: 'administer site configuration'

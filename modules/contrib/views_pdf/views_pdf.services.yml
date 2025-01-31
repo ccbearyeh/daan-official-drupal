@@ -1,0 +1,4 @@
+services:
+  plugin.manager.views_pdf.font:
+    class: Drupal\views_pdf\Views_pdfManager
+    arguments: [font, '@container.namespaces', '@cache.discovery', '@module_handler']

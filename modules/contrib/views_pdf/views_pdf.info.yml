@@ -1,0 +1,16 @@
+name: Views PDF
+description: 'Views plugin to export a view as a PDF file.'
+type: module
+package: Views
+core_version_requirement: ^9.4 || ^10
+php: 8.0
+
+dependencies:
+  - drupal:views
+
+configure: views_pdf.views_pdf_settings
+
+# Information added by Drupal.org packaging script on 2023-04-05
+version: '3.0.0-alpha10'
+project: 'views_pdf'
+datestamp: 1680726804

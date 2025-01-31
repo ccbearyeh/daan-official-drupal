@@ -1,0 +1,18 @@
+langcode: en
+status: true
+dependencies:
+  module:
+    - google_map_field
+    - node
+id: node.field_listing_map
+field_name: field_listing_map
+entity_type: node
+type: google_map_field
+settings: {  }
+module: google_map_field
+locked: false
+cardinality: 1
+translatable: true
+indexes: {  }
+persist_with_no_fields: false
+custom_storage: false

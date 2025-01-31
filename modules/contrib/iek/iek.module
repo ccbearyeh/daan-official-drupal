@@ -1,0 +1,367 @@
+<?php
+
+/**
+ * @file
+ * Contains "iek" module.
+ */
+
+
+/**
+ * Implements hook_theme().
+ */
+function iek_theme() {
+  return [
+    'iek_image_border_summary' => [
+      'variables' => ['data' => NULL, 'effect' => []],
+    ],
+    'iek_image_corner_summary' => [
+      'variables' => ['data' => NULL, 'effect' => []],
+    ],
+    'iek_image_padding_summary' => [
+      'variables' => ['data' => NULL, 'effect' => []],
+    ],
+    'iek_image_resize_summary' => [
+      'variables' => ['data' => NULL, 'effect' => []],
+    ],
+    'iek_image_watermark_summary' => [
+      'variables' => ['data' => NULL, 'effect' => []],
+    ],
+    'iek_image_overlay_summary' => [
+      'variables' => ['data' => NULL, 'effect' => []],
+    ],
+    'iek_image_filter_summary' => [
+      'variables' => ['data' => NULL, 'effect' => []],
+    ],
+  ];
+}
+
+/**
+ * Implements hook_iek_watermark_font().
+ */
+function iek_iek_watermark_font() {
+  $path = \Drupal::service('extension.list.module')->getPath('iek') . '/fonts';
+
+  return [
+    'bubble' => [
+      'name' => 'bubble',
+      'title' => t('Bubble'),
+      'file' => 'bubble.ttf',
+      'path' => $path,
+    ],
+    'digital' => [
+      'name' => 'digital',
+      'title' => t('Digital'),
+      'file' => 'digital.ttf',
+      'path' => $path,
+    ],
+    'snow' => [
+      'name' => 'snow',
+      'title' => t('Snow'),
+      'file' => 'snow.ttf',
+      'path' => $path,
+    ],
+    'tuffy_bold' => [
+      'name' => 'tuffy_bold',
+      'title' => t('Tuffy Bold'),
+      'file' => 'tuffy_bold.ttf',
+      'path' => $path,
+    ],
+    'wedding' => [
+      'name' => 'wedding',
+      'title' => t('Wedding'),
+      'file' => 'wedding.ttf',
+      'path' => $path,
+    ],
+  ];
+}
+
+/**
+ * Implements hook_iek_overlay().
+ */
+function iek_iek_overlay() {
+  $path = \Drupal::service('extension.list.module')->getPath('iek') . '/overlays';
+
+  return [
+    'basic' => [
+      'name' => 'basic',
+      'title' => t('Basic'),
+      'children' => [
+        'basic_dropshadow_001_1024x768' => [
+          'name' => 'basic_dropshadow_001_1024x768',
+          'title' => t('Drop shadow 001 - 1024x768'),
+          'path' => $path . '/basic',
+          'file' => 'basic-dropshadow-001-1024x768.png',
+        ],
+        'basic_dropshadow_001_768x1024' => [
+          'name' => 'basic_dropshadow_001_768x1024',
+          'title' => t('Drop shadow 001 - 768x1024'),
+          'path' => $path . '/basic',
+          'file' => 'basic-dropshadow-001-768x1024.png',
+        ],
+        'basic_dropshadow_001_600x600' => [
+          'name' => 'basic_dropshadow_001_600x600',
+          'title' => t('Drop shadow 001 - 600x600'),
+          'path' => $path . '/basic',
+          'file' => 'basic-dropshadow-001-600x600.png',
+        ],
+        'basic_film_001_1024x768' => [
+          'name' => 'basic_film_001_1024x768',
+          'title' => t('Film 001 - 1024x768'),
+          'path' => $path . '/basic',
+          'file' => 'basic-film-001-1024x768.png',
+        ],
+        'basic_film_001_768x1024' => [
+          'name' => 'basic_film_001_768x1024',
+          'title' => t('Film 001 - 768x1024'),
+          'path' => $path . '/basic',
+          'file' => 'basic-film-001-768x1024.png',
+        ],
+        'basic_film_001_600x600' => [
+          'name' => 'basic_film_001_600x600',
+          'title' => t('Film 001 - 600x600'),
+          'path' => $path . '/basic',
+          'file' => 'basic-film-001-600x600.png',
+        ],
+        'basic_overlap_001_1024x768' => [
+          'name' => 'basic_overlap_001_1024x768',
+          'title' => t('Overlap 001 - 1024x768'),
+          'path' => $path . '/basic',
+          'file' => 'basic-overlap-001-1024x768.png',
+        ],
+        'basic_overlap_001_768x1024' => [
+          'name' => 'basic_overlap_001_768x1024',
+          'title' => t('Overlap 001 - 768x1024'),
+          'path' => $path . '/basic',
+          'file' => 'basic-overlap-001-768x1024.png',
+        ],
+        'basic_overlap_001_600x600' => [
+          'name' => 'basic_overlap_001_600x600',
+          'title' => t('Overlap 001 - 600x600'),
+          'path' => $path . '/basic',
+          'file' => 'basic-overlap-001-600x600.png',
+        ],
+        'basic_stamp_001_1024x768' => [
+          'name' => 'basic_stamp_001_1024x768',
+          'title' => t('Stamp 001 - 1024x768'),
+          'path' => $path . '/basic',
+          'file' => 'basic-stamp-001-1024x768.png',
+        ],
+        'basic_stamp_001_768x1024' => [
+          'name' => 'basic_stamp_001_768x1024',
+          'title' => t('Stamp 001 - 768x1024'),
+          'path' => $path . '/basic',
+          'file' => 'basic-stamp-001-768x1024.png',
+        ],
+        'basic_stamp_001_600x600' => [
+          'name' => 'basic_stamp_001_600x600',
+          'title' => t('Stamp 001 - 600x600'),
+          'path' => $path . '/basic',
+          'file' => 'basic-stamp-001-600x600.png',
+        ],
+      ],
+    ],
+  ];
+}
+
+/**
+ * Converts color format from Hex to RGB.
+ *
+ * @param string $hex_str
+ *   A Hex color format like '#cccccc'.
+ * @param bool $return_as_string
+ *   A boolean flag to indicate to return a string or an array.
+ * @param string $separator
+ *   A character or string to join the RGB array elements.
+ *
+ * @return array|string|bool
+ *   - An associative RGB array if 'return_as_string' is set to FALSE.
+ *   - A RGB string that was split by the 'separator' will be returned if
+ *     'return_as_string' is set to TRUE.
+ *   - Return FALSE if an invalid Hex color code.
+ */
+function iek_hex2rgb($hex_str, $return_as_string = FALSE, $separator = ',') {
+  // Gets a proper Hex string.
+  $hex_str = preg_replace("/[^0-9A-Fa-f]/", '', $hex_str);
+  $rgb_array = [];
+  // If a proper Hex code, convert using bitwise operation.
+  if (strlen($hex_str) == 6) {
+    $border_color_val = hexdec($hex_str);
+    $rgb_array['red'] = 0xFF & ($border_color_val >> 0x10);
+    $rgb_array['green'] = 0xFF & ($border_color_val >> 0x8);
+    $rgb_array['blue'] = 0xFF & $border_color_val;
+  }
+  // If shorthand notation, need some string manipulations.
+  elseif (strlen($hex_str) == 3) {
+    $rgb_array['red'] = hexdec(str_repeat(substr($hex_str, 0, 1), 2));
+    $rgb_array['green'] = hexdec(str_repeat(substr($hex_str, 1, 1), 2));
+    $rgb_array['blue'] = hexdec(str_repeat(substr($hex_str, 2, 1), 2));
+  }
+  else {
+    // Invalid Hex color code.
+    return FALSE;
+  }
+
+  // Returns the RGB string or the associative array.
+  return $return_as_string ? implode($separator, $rgb_array) : $rgb_array;
+}
+
+/**
+ * Gets a list of available watermark fonts.
+ *
+ * @param string $font_name
+ *   A font name if you just want to get a particular watermark font.
+ *   Leaves empty if you want to get all available watermark fonts.
+ *
+ * @return array
+ *   Particular watermark font if the 'font_name' is given.
+ *   All available watermark fonts otherwise.
+ */
+function iek_get_watermark_fonts($font_name = '') {
+  $fonts = \Drupal::moduleHandler()->invokeAll('iek_watermark_font');
+
+  // Invoke hook_iek_watermark_fonts_alter().
+  // To allow all modules to alter the fonts.
+  \Drupal::moduleHandler()->alter('iek_watermark_font', $fonts);
+
+  if (!empty($font_name)) {
+    if (isset($fonts[$font_name])) {
+      return $fonts[$font_name];
+    }
+    else {
+      return [];
+    }
+  }
+
+  return $fonts;
+}
+
+/**
+ * Gets a list of available image overlays.
+ *
+ * @param string $overlay_name
+ *   A overlay name if you just want to get a particular image overlay.
+ *   Leaves empty if you want to get all available overlays.
+ *
+ * @return array
+ *   Particular overlays if the 'overlay_name' is given.
+ *   All available overlays otherwise.
+ */
+function iek_get_overlays($overlay_name = '') {
+  $overlays = \Drupal::moduleHandler()->invokeAll('iek_overlay');
+
+  // Invoke hook_iek_overlay_alter().
+  // To allow all modules to alter the overlays.
+  \Drupal::moduleHandler()->alter('iek_overlay', $overlays);
+
+  if (!empty($overlay_name)) {
+    foreach ($overlays as $item1) {
+      foreach ($item1['children'] as $item2) {
+        if ($item2['name'] == $overlay_name) {
+          return $item2;
+        }
+      }
+    }
+  }
+
+  return $overlays;
+}
+
+/**
+ * Gets a list of available image filters.
+ *
+ * @return array
+ *   All available filters array.
+ */
+function iek_get_image_filters() {
+  $filters = [
+    IMG_FILTER_NEGATE => t('Negate'),
+    IMG_FILTER_GRAYSCALE => t('Grayscale'),
+    IMG_FILTER_BRIGHTNESS => t('Brightness'),
+    IMG_FILTER_CONTRAST => t('Contrast'),
+    IMG_FILTER_COLORIZE => t('Colorize'),
+    IMG_FILTER_EDGEDETECT => t('Edgedetect'),
+    IMG_FILTER_EMBOSS => t('Emboss'),
+    IMG_FILTER_GAUSSIAN_BLUR => t('Gaussian blur'),
+    IMG_FILTER_SELECTIVE_BLUR => t('Selective blur'),
+    IMG_FILTER_MEAN_REMOVAL => t('Mean removal'),
+    IMG_FILTER_SMOOTH => t('Smooth'),
+    // IMG_FILTER_PIXELATE => t('Pixelate'),
+  ];
+
+  return $filters;
+}
+
+/**
+ * Creates an image from file or URL.
+ *
+ * @param string $file
+ *   Path to the image.
+ *
+ * @return resource|NULL
+ *   An image identifier representing the image obtained from the given
+ *   filename.
+ */
+function iek_gd_create_image($file) {
+  $data = @getimagesize($file);
+
+  switch ($data['mime']) {
+    case 'image/jpeg':
+      $image = imagecreatefromjpeg($file);
+      break;
+
+    case 'image/gif':
+      $image = imagecreatefromgif($file);
+      break;
+
+    case 'image/png':
+      $image = imagecreatefrompng($file);
+      break;
+
+    default:
+      $image = NULL;
+      break;
+  }
+
+  return $image;
+}
+
+/**
+ * Gets details about an image.
+ *
+ * Drupal supports GIF, JPG and PNG file formats when used with the GD
+ * toolkit, and may support others, depending on which toolkits are
+ * installed.
+ *
+ * @param string $filepath
+ *   String specifying the path of the image file.
+ *
+ * @return array|bool
+ *   FALSE, if the file could not be found or is not an image. Otherwise, a
+ *   keyed array containing information about the image:
+ *   - "width": Width, in pixels.
+ *   - "height": Height, in pixels.
+ *   - "mime_type": MIME type ('image/jpeg', 'image/gif', 'image/png').
+ *   - "file_size": File size in bytes.
+ */
+function iek_image_get_info($filepath) {
+  $details = FALSE;
+
+  if (!is_file($filepath) && !is_uploaded_file($filepath)) {
+    return $details;
+  }
+
+  $image = Drupal::service('image.factory')->get($filepath);
+
+  if ($image) {
+    $details = [];
+    $details['width'] = $image->getToolkit()->getWidth();
+    $details['height'] = $image->getToolkit()->getHeight();
+    $details['mime_type'] = $image->getToolkit()->getMimeType();
+  }
+
+  if (isset($details) && is_array($details)) {
+    $details['file_size'] = filesize($filepath);
+  }
+
+  return $details;
+}

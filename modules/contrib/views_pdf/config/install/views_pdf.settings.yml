@@ -1,0 +1,47 @@
+views_pdf_template_path: 'public://views_pdf_templates/'
+
+# Page
+page_details_open: 2
+default_page_format: A4
+default_page_format_custom: ''
+default_page_orientation: P
+unit: mm
+margin_left: 15
+margin_right: 15
+margin_top: 15
+margin_bottom: 15
+leading_template: null
+template: null
+succeed_template: null
+right_to_left: false
+default_font_family: helvetica
+default_font_style: null
+default_font_size: 11
+default_text_align: L
+default_font_color: '333333'
+default_text_hyphenate: none
+
+# Headers zone
+header_margin: 1
+header_font_family: helvetica
+header_font_style: null
+header_font_size: 12
+header_text_align: C
+header_font_color: '333333'
+
+# Success or footer zone
+footer_spacing: 1
+footer_font_family: helvetica
+footer_font_style: null
+footer_font_size: 12
+footer_text_align: C
+footer_font_color: '333333'
+
+# Templates
+leading_template: ''
+leading_header: ''
+leading_footer: ''
+template: ''
+succeed_template: ''
+succeed_header: ''
+succeed_footer: ''

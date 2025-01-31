@@ -1,0 +1,37 @@
+# Views PDF
+
+With the Views PDF module you can output a view as a PDF document. Each field of the view can be placed on the PDF page directly in the administration interface. Therefore, a new display called "PDF" is added.
+
+There are already some PDF solutions such as Print. But these solutions use the HTML output and converts this to PDF. The disadvantages of such an integration are:
+    * No control over page flow (e.g. page break).
+    * Little or no control over page header and footer.
+    * You need HTML skills to change the layout.
+    * The rendering is slow and need a lot of memory, because it need to render
+      the HTML.
+    * Complex tables make troubles.
+    * Vector graphics can not be implemented, therefore the printing of the docum
+ent can be problematic.
+    * You are limited by HTML's capabilities.
+
+## Installation instructions:
+
+### Composer (recommended)
+
+* Follow the instruction to install the package via [composer](https://www.drupal.org/node/1897420#s-add-a-module-with-composer)
+
+### Legacy installer Ludwig helper (not recommended)
+
+* Download the module or checkout the module, [follow these steps](https://www.drupal.org/docs/extending-drupal/installing-modules#s-add-a-module-with-ludwig).
+
+## Basic Usage
+
+   1. Setup a new view or use an existing view. How to do this see in the documentation of the Views module.
+   2. In the view add the display "PDF Page".
+   3. Select the new added display.
+   4. Select the Style. You can use PDF un-formatted to place the fields in no structured way on the PDF. Use PDF table to place the fields in table with a table header.
+   5. In the settings of the style you can setup per field settings. Such as the position, the size of the field, the font and so on. Important: Switch to the PDF Page display in the default display this options does not appear.
+   6. Under PDF Page Setting you can setup the size of the page.
+   7. Under PDF Font Settings you can setup the default fonts for the PDF.
+   8. Under PDF Template Settings you can setup a background PDF.
+   9. To add a page break, you can add a PDF page break field. When this field is rendered new page is added. Reorder the fields if necessary.
+  10. You can find also a page number field. You can use it to print the current page number. Important for positioning the field in the header or footer, you need to set the relative position in the field settings to "In header / footer".

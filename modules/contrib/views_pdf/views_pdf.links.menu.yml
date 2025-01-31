@@ -1,0 +1,11 @@
+entity.views_pdf_template.overview:
+  title: Views PDF Templates
+  parent: system.admin_structure
+  description: List of Views PDF templates.
+  route_name: entity.views_pdf_template.collection
+
+views_pdf.views_pdf_settings:
+  title: Views PDF Settings
+  parent: system.admin_config_content
+  description: Views PDF base settings configuration.
+  route_name: views_pdf.views_pdf_settings

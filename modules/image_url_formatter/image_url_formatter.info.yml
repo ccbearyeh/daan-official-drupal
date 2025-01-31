@@ -1,0 +1,12 @@
+name: Image URL Formatter
+type: module
+description: 'Add an URL formatter for image field.'
+package: Field types
+core_version_requirement: ^8 || ^9 || ^10
+dependencies:
+  - drupal:image
+
+# Information added by Drupal.org packaging script on 2023-04-26
+version: '8.x-1.1'
+project: 'image_url_formatter'
+datestamp: 1682525891

@@ -1,0 +1,202 @@
+langcode: en
+status: true
+dependencies:
+  config:
+    - core.entity_view_display.comment.comment.default
+    - field.field.node.listing.body
+    - field.field.node.listing.comment
+    - field.field.node.listing.field_listing_address
+    - field.field.node.listing.field_listing_amenities
+    - field.field.node.listing.field_listing_category
+    - field.field.node.listing.field_listing_email
+    - field.field.node.listing.field_listing_facebook
+    - field.field.node.listing.field_listing_gallery
+    - field.field.node.listing.field_listing_google
+    - field.field.node.listing.field_listing_image
+    - field.field.node.listing.field_listing_linkedin
+    - field.field.node.listing.field_listing_location
+    - field.field.node.listing.field_listing_map
+    - field.field.node.listing.field_listing_phone
+    - field.field.node.listing.field_listing_price
+    - field.field.node.listing.field_listing_tags
+    - field.field.node.listing.field_listing_time
+    - field.field.node.listing.field_listing_twitter
+    - field.field.node.listing.field_listing_video
+    - field.field.node.listing.field_listing_website
+    - node.type.listing
+  module:
+    - comment
+    - google_map_field
+    - image
+    - options
+    - text
+    - user
+id: node.listing.default
+targetEntityType: node
+bundle: listing
+mode: default
+content:
+  body:
+    label: hidden
+    type: text_default
+    weight: 101
+    settings: {  }
+    third_party_settings: {  }
+    region: content
+  comment:
+    weight: 119
+    label: hidden
+    settings:
+      view_mode: default
+      pager_id: 0
+    third_party_settings: {  }
+    type: comment_default
+    region: content
+  field_listing_address:
+    weight: 106
+    label: hidden
+    settings: {  }
+    third_party_settings: {  }
+    type: basic_string
+    region: content
+  field_listing_amenities:
+    weight: 103
+    label: hidden
+    settings:
+      link: true
+    third_party_settings: {  }
+    type: entity_reference_label
+    region: content
+  field_listing_category:
+    weight: 102
+    label: hidden
+    settings:
+      link: true
+    third_party_settings: {  }
+    type: entity_reference_label
+    region: content
+  field_listing_email:
+    weight: 109
+    label: hidden
+    settings:
+      link_to_entity: false
+    third_party_settings: {  }
+    type: string
+    region: content
+  field_listing_facebook:
+    weight: 112
+    label: hidden
+    settings:
+      link_to_entity: false
+    third_party_settings: {  }
+    type: string
+    region: content
+  field_listing_gallery:
+    weight: 105
+    label: hidden
+    settings:
+      image_style: large
+      image_link: ''
+    third_party_settings: {  }
+    type: image
+    region: content
+  field_listing_google:
+    weight: 114
+    label: hidden
+    settings:
+      link_to_entity: false
+    third_party_settings: {  }
+    type: string
+    region: content
+  field_listing_image:
+    weight: 104
+    label: hidden
+    settings:
+      image_style: ''
+      image_link: ''
+    third_party_settings: {  }
+    type: image
+    region: content
+  field_listing_linkedin:
+    weight: 115
+    label: hidden
+    settings:
+      link_to_entity: false
+    third_party_settings: {  }
+    type: string
+    region: content
+  field_listing_location:
+    weight: 116
+    label: hidden
+    settings:
+      link: true
+    third_party_settings: {  }
+    type: entity_reference_label
+    region: content
+  field_listing_map:
+    weight: 108
+    label: hidden
+    settings: {  }
+    third_party_settings: {  }
+    type: google_map_field_default
+    region: content
+  field_listing_phone:
+    weight: 110
+    label: hidden
+    settings:
+      link_to_entity: false
+    third_party_settings: {  }
+    type: string
+    region: content
+  field_listing_price:
+    weight: 121
+    label: hidden
+    settings: {  }
+    third_party_settings: {  }
+    type: list_default
+    region: content
+  field_listing_tags:
+    weight: 117
+    label: hidden
+    settings:
+      link: true
+    third_party_settings: {  }
+    type: entity_reference_label
+    region: content
+  field_listing_time:
+    weight: 107
+    label: hidden
+    settings: {  }
+    third_party_settings: {  }
+    type: text_default
+    region: content
+  field_listing_twitter:
+    weight: 113
+    label: hidden
+    settings:
+      link_to_entity: false
+    third_party_settings: {  }
+    type: string
+    region: content
+  field_listing_video:
+    weight: 118
+    label: hidden
+    settings:
+      link_to_entity: false
+    third_party_settings: {  }
+    type: string
+    region: content
+  field_listing_website:
+    weight: 111
+    label: hidden
+    settings:
+      link_to_entity: false
+    third_party_settings: {  }
+    type: string
+    region: content
+  links:
+    weight: 100
+    region: content
+    settings: {  }
+    third_party_settings: {  }
+hidden: {  }

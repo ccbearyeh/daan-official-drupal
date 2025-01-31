@@ -1,0 +1,5 @@
+entity.views_pdf_template.add_form:
+  route_name: 'entity.views_pdf_template.add_form'
+  title: 'Add Views PDF template'
+  appears_on:
+    - entity.views_pdf_template.collection

@@ -1,0 +1,22 @@
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.storage.node.field_content_builder
+    - node.type.page
+  module:
+    - gavias_content_builder
+id: node.page.field_content_builder
+field_name: field_content_builder
+entity_type: node
+bundle: page
+label: 'Content Builder'
+description: ''
+required: false
+translatable: false
+default_value:
+  -
+    bid: '0'
+default_value_callback: ''
+settings: {  }
+field_type: gavias_content_builder

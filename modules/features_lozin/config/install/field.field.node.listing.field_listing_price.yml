@@ -1,0 +1,20 @@
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.storage.node.field_listing_price
+    - node.type.listing
+  module:
+    - options
+id: node.listing.field_listing_price
+field_name: field_listing_price
+entity_type: node
+bundle: listing
+label: 'Listing Price'
+description: ''
+required: false
+translatable: false
+default_value: {  }
+default_value_callback: ''
+settings: {  }
+field_type: list_string

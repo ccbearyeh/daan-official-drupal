@@ -1,0 +1,9 @@
+{
+    "name": "drupal/iek",
+    "type": "drupal-module",
+    "description": "Provides custom image effects.",
+    "require": {
+        "ext-gd": "*",
+        "drupal/core": "^9.3 || ^10"
+    }
+}

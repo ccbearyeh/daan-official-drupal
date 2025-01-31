@@ -1,0 +1,16 @@
+views_pdf.views_pdf_template.*:
+  type: config_entity
+  label: Views PDF Template
+  mapping:
+    id:
+      type: string
+      label: ID
+    label:
+      type: label
+      label: Label
+    uuid:
+      type: string
+    description:
+      type: string
+    template:
+      type: file

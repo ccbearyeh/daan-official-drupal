@@ -1,0 +1,11 @@
+name: 'FPDI Print'
+type: module
+description: 'Allows any views can print from existing PDF'
+core_version_requirement: ^9.3 || ^10
+package: 'Views'
+configure: fpdi_print.settings
+
+# Information added by Drupal.org packaging script on 2022-12-29
+version: '1.1.1'
+project: 'fpdi_print'
+datestamp: 1672278732

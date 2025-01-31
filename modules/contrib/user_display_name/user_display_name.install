@@ -1,0 +1,46 @@
+<?php
+
+/**
+ * @file
+ * Install file for the user_display_name module.
+ */
+
+/**
+ * Implements hook_install().
+ *
+ * @see https://www.drupal.org/node/2554097
+ * @see https://www.drupal.org/project/drupal/issues/2258347
+ */
+function user_display_name_install() {
+  $entity_type_id = 'user';
+
+  /** @var \Drupal\Core\Entity\EntityDefinitionUpdateManagerInterface $definition_update_manager */
+  $definition_update_manager = \Drupal::entityDefinitionUpdateManager();
+
+  /** @var \Drupal\Core\Entity\EntityTypeInterface $entity_type */
+  $entity_type = $definition_update_manager->getEntityType($entity_type_id);
+
+  // Add the display name base field.
+  $definition = $definition_update_manager->getFieldStorageDefinition('display_name', $entity_type_id);
+  if (empty($definition)) {
+    $definitions = user_display_name_entity_base_field_info($entity_type);
+    $definition_update_manager->installFieldStorageDefinition('display_name', $entity_type_id, 'user_display_name', $definitions['display_name']);
+  }
+}
+
+/**
+ * Implements hook_uninstall().
+ */
+function user_display_name_uninstall() {
+  $entity_type_id = 'user';
+
+  /** @var \Drupal\Core\Entity\EntityDefinitionUpdateManagerInterface $definition_update_manager */
+  $definition_update_manager = \Drupal::entityDefinitionUpdateManager();
+
+  // Remove the display name base field.
+  /** @var \Drupal\Core\Field\FieldStorageDefinitionInterface|null $definition */
+  $definition = $definition_update_manager->getFieldStorageDefinition('display_name', $entity_type_id);
+  if (empty($definition)) {
+    $definition_update_manager->uninstallFieldStorageDefinition($definition);
+  }
+}

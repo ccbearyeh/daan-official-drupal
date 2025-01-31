@@ -1,0 +1,18 @@
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.storage.taxonomy_term.field_listing_category_icon
+    - taxonomy.vocabulary.listing_category
+id: taxonomy_term.listing_category.field_listing_category_icon
+field_name: field_listing_category_icon
+entity_type: taxonomy_term
+bundle: listing_category
+label: 'Listing Category Icon'
+description: ''
+required: false
+translatable: false
+default_value: {  }
+default_value_callback: ''
+settings: {  }
+field_type: string

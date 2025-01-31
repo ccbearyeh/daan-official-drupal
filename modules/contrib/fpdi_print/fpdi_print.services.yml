@@ -1,0 +1,4 @@
+services:
+  fpdi_print.print_builder:
+    class: Drupal\fpdi_print\PrintBuilder
+    arguments: [ '@entity_type.manager', '@stream_wrapper_manager', '@current_user', '@config.factory' ]
